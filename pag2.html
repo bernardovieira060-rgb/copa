@@ -5,77 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Marrocos na Copa</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="shortcut icon" type="image/svg=xml" href="img/marrocos.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-
-body {
-      background: white;
-      font-family: Arial, sans-serif;
+    * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
-      overflow-x: hidden;
     }
-/* MENU */
-.menu {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-}
-/* Menu responsivo */
-.menu {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 80px;
-            background: rgba(0, 0, 0, 0.3);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: 0.3s;
-        }
-.logo{
-    position: relative;
-    z-index: 2000;
-}
-.logo img {
-    height: 45px;
-}
- 
-.links {
-    display: flex;
-    gap: 30px;
-}
- 
-.links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-}
- 
-.links a::after {
-    content: "";
-    width: 0;
-    height: 2px;
-    background: #C1272d;
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
- 
-.links a:hover::after {
-    width: 100%;
-}
 
-:root {
+    :root {
+      --cor-primaria: #C1272D;
       --branco: #006233;
       --verde: #000;
       --vermelho: #C1272D;
@@ -83,54 +24,168 @@ body {
       --areia: #F5ECD7;
       --escuro: #1A0A00;
       --texto: #2C1A0E;
+      --transicao: all 0.3s ease;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+    }
 
+    body {
+  background: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  color: var(--texto);
+}
 
-    /* ─── GRAIN OVERLAY ─── */
     body::before {
       content: '';
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 999;
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
     }
 
-    /* ─── HERO HEADER ─── */
-    header {
+    /* MENU IGUAL PAG5 */
+    .menu {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 21px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: 0.3s;
+    }
+
+    .menu.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 14px 60px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      position: relative;
+      z-index: 2000;
+    }
+
+    .logo img {
+      height: 45px;
+    }
+
+    .links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 620;
+      position: relative;
+    }
+    
+    .menu.scrolled .links a {
+    color: #111 !important;
+}
+
+    .links a::after {
+      content: "";
+      width: 0;
+      height: 2px;
+      background: #C1272D;
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+
+    .links a:hover::after,
+    .links a.ativo::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 2000;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu.scrolled .hamburger span {
+      background: #111;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* HERO HEADER */
+    .hero-header {
       position: relative;
       background: var(--verde);
       overflow: hidden;
       padding: 7rem 2rem 2.5rem;
       text-align: center;
+      margin-top: 0;
     }
 
-    header::before {
+    .hero-header::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: radial-gradient(ellipse at 50% 0%, rgba(193,39,45,0.35) 0%, transparent 70%);
     }
 
-    /* Geometric arabesque pattern */
-    header::after {
+    .hero-header::after {
       content: '';
-      position: absolute; inset: 0;
-      background-image: repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 19px),
-                        repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 19px);
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 19px),
+        repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 19px);
       pointer-events: none;
     }
 
-    header h1 {
+    .hero-header h1 {
       font-family: 'Playfair Display', serif;
       font-weight: 900;
       font-size: clamp(2.2rem, 7vw, 5rem);
       color: #fff;
       letter-spacing: 0.04em;
       line-height: 1.05;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
       text-shadow: 0 4px 24px rgba(0,0,0,0.4);
     }
 
-    header h1 span {
+    .hero-header h1 span {
       color: var(--ouro);
       display: block;
       font-style: italic;
@@ -142,19 +197,23 @@ body {
       font-size: 1rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
     }
 
     .flag-stripe {
       display: flex;
       height: 6px;
     }
-    .flag-stripe div { flex: 1; }
+
+    .flag-stripe div {
+      flex: 1;
+    }
+
     .flag-stripe .s1 { background: var(--vermelho); }
     .flag-stripe .s2 { background: var(--ouro); }
     .flag-stripe .s3 { background: var(--vermelho); }
 
-    /* ─── INTRO ─── */
     .intro {
       max-width: 820px;
       margin: 3rem auto 0;
@@ -169,7 +228,6 @@ body {
       color: var(--texto);
     }
 
-    /* ─── TIMELINE ─── */
     .timeline-section {
       max-width: 900px;
       margin: 4rem auto;
@@ -184,22 +242,27 @@ body {
       margin-bottom: 2.5rem;
       position: relative;
     }
+
     .section-title::after {
       content: '';
       display: block;
-      width: 60px; height: 3px;
+      width: 60px;
+      height: 3px;
       background: var(--vermelho);
       margin: 0.6rem auto 0;
       border-radius: 2px;
     }
 
-    .timeline { position: relative; }
+    .timeline {
+      position: relative;
+    }
 
     .timeline::before {
       content: '';
       position: absolute;
       left: 50%;
-      top: 0; bottom: 0;
+      top: 0;
+      bottom: 0;
       width: 3px;
       background: linear-gradient(to bottom, var(--verde), var(--vermelho));
       transform: translateX(-50%);
@@ -225,7 +288,8 @@ body {
       left: 50%;
       top: 1.2rem;
       transform: translateX(-50%);
-      width: 18px; height: 18px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       background: var(--ouro);
       border: 3px solid var(--verde);
@@ -233,7 +297,9 @@ body {
       transition: transform 0.3s ease;
     }
 
-    .tl-item:hover .tl-dot { transform: translateX(-50%) scale(1.4); }
+    .tl-item:hover .tl-dot {
+      transform: translateX(-50%) scale(1.4);
+    }
 
     .tl-card {
       background: #fff;
@@ -245,7 +311,10 @@ body {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .tl-item:nth-child(even) .tl-card { border-left: none; border-right: 4px solid var(--verde); }
+    .tl-item:nth-child(even) .tl-card {
+      border-left: none;
+      border-right: 4px solid var(--verde);
+    }
 
     .tl-card:hover {
       transform: translateY(-4px);
@@ -260,7 +329,9 @@ body {
       line-height: 1;
     }
 
-    .tl-item:nth-child(even) .tl-year { color: var(--verde); }
+    .tl-item:nth-child(even) .tl-year {
+      color: var(--verde);
+    }
 
     .tl-host {
       font-size: 0.78rem;
@@ -296,7 +367,6 @@ body {
       text-transform: uppercase;
     }
 
-    /* ─── HIGHLIGHT BOX ─── */
     .highlight-box {
       max-width: 820px;
       margin: 2rem auto 4rem;
@@ -315,7 +385,8 @@ body {
     .hbox::before {
       content: '★';
       position: absolute;
-      right: -0.5rem; top: -1rem;
+      right: -0.5rem;
+      top: -1rem;
       font-size: 8rem;
       opacity: 0.07;
       line-height: 1;
@@ -334,15 +405,19 @@ body {
       opacity: 0.9;
     }
 
-    /* ─── STATS ─── */
     .stats-section {
       background: var(--escuro);
       padding: 3.5rem 1.5rem;
       text-align: center;
     }
 
-    .stats-section .section-title { color: var(--ouro); }
-    .stats-section .section-title::after { background: var(--vermelho); }
+    .stats-section .section-title {
+      color: var(--ouro);
+    }
+
+    .stats-section .section-title::after {
+      background: var(--vermelho);
+    }
 
     .stats-grid {
       display: flex;
@@ -363,7 +438,9 @@ body {
       transition: background 0.3s;
     }
 
-    .stat-card:hover { background: rgba(193,39,45,0.2); }
+    .stat-card:hover {
+      background: rgba(193,39,45,0.2);
+    }
 
     .stat-number {
       font-family: 'Playfair Display', serif;
@@ -381,32 +458,6 @@ body {
       margin-top: 0.5rem;
     }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--verde);
-      text-align: center;
-      padding: 2rem 1rem;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.85rem;
-    }
-    footer strong { color: var(--ouro); }
-
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .tl-item:nth-child(1)  { animation-delay: 0.1s; }
-    .tl-item:nth-child(2)  { animation-delay: 0.2s; }
-    .tl-item:nth-child(3)  { animation-delay: 0.3s; }
-    .tl-item:nth-child(4)  { animation-delay: 0.4s; }
-    .tl-item:nth-child(5)  { animation-delay: 0.5s; }
-    .tl-item:nth-child(6)  { animation-delay: 0.6s; }
-    .tl-item:nth-child(7)  { animation-delay: 0.7s; }
-    .tl-item:nth-child(8)  { animation-delay: 0.8s; }
-
-    /* ─── PLAYERS ─── */
     .players-section {
       max-width: 1060px;
       margin: 4rem auto;
@@ -451,7 +502,9 @@ body {
       transition: transform 0.4s ease;
     }
 
-    .player-card:hover .player-avatar img { transform: scale(1.05); }
+    .player-card:hover .player-avatar img {
+      transform: scale(1.05);
+    }
 
     .player-avatar .img-placeholder {
       width: 100%;
@@ -466,7 +519,9 @@ body {
       background: linear-gradient(135deg, #2c1a0e, #5a3a1a);
     }
 
-    .player-info { padding: 1.1rem 1.2rem 1.3rem; }
+    .player-info {
+      padding: 1.1rem 1.2rem 1.3rem;
+    }
 
     .player-name {
       font-family: 'Playfair Display', serif;
@@ -498,130 +553,169 @@ body {
       color: #555;
     }
 
-    .player-card:nth-child(1)  { animation-delay: 0.05s; }
-    .player-card:nth-child(2)  { animation-delay: 0.10s; }
-    .player-card:nth-child(3)  { animation-delay: 0.15s; }
-    .player-card:nth-child(4)  { animation-delay: 0.20s; }
-    .player-card:nth-child(5)  { animation-delay: 0.25s; }
-    .player-card:nth-child(6)  { animation-delay: 0.30s; }
-    .player-card:nth-child(7)  { animation-delay: 0.35s; }
-    .player-card:nth-child(8)  { animation-delay: 0.40s; }
-
-    /* ─── FOOTER ─── */
     .footer {
-      background: #111;
+      background: #000;
       color: #fff;
-      text-align: center;
-      padding: 60px 20px 30px;
+      padding: 4rem 0 1rem;
     }
 
-    .footer-content h3 {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: var(--vermelho);
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 2rem;
     }
 
-    .footer-content > p { color: #ccc; font-size: 16px; }
+    .footer-section h4 {
+      margin-bottom: 1.2rem;
+      color: #C1272D;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-    .footer-links { margin: 25px 0; }
+    .footer-section p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
 
-    .footer-links a {
-      font-family: Arial, sans-serif;
-      color: white;
-      margin: 0 15px;
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-section ul a {
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      position: relative;
+      transition: color 0.3s;
     }
 
-    .footer-links a::after {
-      content: "";
-      width: 0%; height: 2px;
-      background: var(--vermelho);
-      position: absolute;
-      left: 0; bottom: -5px;
-      transition: 0.3s;
+    .footer-section ul a:hover {
+      color: #C1272D;
     }
 
-    .footer-links a:hover::after { width: 100%; }
-
-    .linha-footer {
-      width: 80%; height: 1px;
-      background: #333;
-      margin: 30px auto;
+    .footer .social-links {
+      display: flex;
+      gap: 1.5rem;
     }
 
-    .direitos { font-size: 14px; color: #777; }
+    .footer .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #C1272D;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
 
-    /* ─── RESPONSIVE ─── */
+    .footer .social-links a:hover {
+      background: #006241;
+      transform: translateY(-3px);
+    }
 
-    /* Large desktop */
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom p {
+      margin: 0.5rem 0;
+    }
+
+    .footer-bottom i {
+      color: #C1272D;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media (min-width: 1200px) {
       .players-grid {
         grid-template-columns: repeat(4, 1fr);
       }
     }
 
-    /* Tablet */
     @media (max-width: 900px) {
-  
       .players-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-      .stats-grid { gap: 1rem; }
+
+      .stats-grid {
+        gap: 1rem;
+      }
     }
+
     @media (max-width: 768px) {
-            .menu {
-                padding: 15px 20px;
-            }
-            
-            .logo-text {
-                font-size: 18px;
-            }
+      .timeline::before {
+        left: 1.2rem;
+      }
 
-            .links {
-                gap: 15px;
-                font-size: 14px;
-            }
+      .tl-item,
+      .tl-item:nth-child(even) {
+        justify-content: flex-start;
+        padding-left: 3.5rem;
+        padding-right: 0;
+      }
 
-            .conteudo h1 {
-                font-size: 40px;
-            }
-        }
-    /* Mobile hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-      z-index: 200;
+      .tl-dot {
+        left: 1.2rem;
+      }
+
+      .tl-card {
+        max-width: 100%;
+        border-left: 4px solid var(--vermelho) !important;
+        border-right: none !important;
+      }
     }
-
-    .hamburger span {
-      display: block;
-      width: 26px; height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     @media (max-width: 640px) {
-      .menu { padding: 16px 24px; }
-      .hamburger { display: flex; }
+      .menu {
+        padding: 16px 24px;
+      }
+
+      .menu.scrolled {
+        padding: 12px 24px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
 
       .links {
         position: fixed;
-        top: 0; right: -100%;
+        top: 0;
+        right: -100%;
         height: 100vh;
         width: 70%;
         max-width: 280px;
-        background: rgba(0,0,0,0.95);
+        background: rgba(0,0,0,0.97);
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -630,56 +724,57 @@ body {
         z-index: 150;
       }
 
-      .links.open { right: 0; }
-
-      .links a { font-size: 1.2rem; }
-
-      .timeline::before { left: 1.2rem; }
-      .tl-item, .tl-item:nth-child(even) {
-        justify-content: flex-start;
-        padding-left: 3.5rem;
-        padding-right: 0;
+      .links.open {
+        right: 0;
       }
-      .tl-dot { left: 1.2rem; }
-      .tl-card { max-width: 100%; border-left: 4px solid var(--vermelho) !important; border-right: none !important; }
 
-      .players-grid { grid-template-columns: 1fr; }
+      .links a {
+        font-size: 1.2rem;
+        color: #fff !important;
+      }
 
-      .footer-links a { display: inline-block; margin: 6px 10px; }
+      .players-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-header {
+        padding: 6rem 1.2rem 2rem;
+      }
     }
   </style>
 </head>
 <body>
-<!-- MENU -->
-<section class="hero">
-    <header class="menu">
-        <div class="logo">
-            <a href="pag1.html">
-                <img src="img/favicon.svg" alt="logo">
-            </a>
-        </div>
+  <header class="menu" id="main-menu">
+    <div class="logo">
+      <img src="img/favicon.svg" alt="Logo Marrocos">
+    </div>
 
-        <nav class="links">
-            <a href="pag2.html">História</a>
-            <a href="pag3.html">Jogadores</a>
-            <a href="pag4.html">Galeria</a>
-            <a href="pag5.html">Últimas notícias</a>
-        </nav>
-    </header>
-    </section>
+    <nav class="links" id="navlinks">
+      <a href="pag1.html">Início</a>
+      <a href="pag2.html" class="ativo">História</a>
+      <a href="pag3.html">Jogadores</a>
+      <a href="pag4.html">Galeria</a>
+      <a href="pag5.html">Cidade Sede</a>
+    </nav>
 
-  <!-- HERO HEADER -->
-  <header>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <header class="hero-header">
     <h1>Marrocos <span>na Copa</span></h1>
     <p class="header-sub">A história das Águias do Atlas no Mundial</p>
   </header>
+
   <div class="flag-stripe">
     <div class="s1"></div>
     <div class="s2"></div>
     <div class="s3"></div>
   </div>
 
-  <!-- INTRO -->
   <section class="intro">
     <p>
       Marrocos é a seleção africana mais bem-sucedida da história da Copa do Mundo FIFA.
@@ -688,11 +783,9 @@ body {
     </p>
   </section>
 
-  <!-- TIMELINE -->
   <section class="timeline-section">
     <h2 class="section-title">Participações Históricas</h2>
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-card">
@@ -760,11 +853,9 @@ body {
           <span class="tl-badge">Semifinalistas</span>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- HIGHLIGHT -->
   <div class="highlight-box">
     <div class="hbox">
       <h3>O Milagre do Catar 2022</h3>
@@ -774,7 +865,6 @@ body {
     </div>
   </div>
 
-  <!-- STATS -->
   <section class="stats-section">
     <h2 class="section-title">Marrocos em Números</h2>
     <div class="stats-grid">
@@ -797,13 +887,11 @@ body {
     </div>
   </section>
 
-  <!-- PLAYERS -->
   <section class="players-section">
     <h2 class="section-title">Jogadores Históricos</h2>
     <div class="players-grid">
-
       <div class="player-card">
-        <div class="player-avatar" id="av-zaki"><div class="img-placeholder"><img src="img/zaki.jpg"></div></div>
+        <div class="player-avatar" id="av-zaki"><div class="img-placeholder"><img src="img/zaki.jpg" alt="Zaki Badou"></div></div>
         <div class="player-info">
           <div class="player-name">Zaki Badou</div>
           <div class="player-pos">Goleiro</div>
@@ -813,7 +901,7 @@ body {
       </div>
 
       <div class="player-card">
-        <div class="player-avatar" id="av-dolmy"><div class="img-placeholder"><img src="img/Abdelmajid Dolmy.jpg"></div></div>
+        <div class="player-avatar" id="av-dolmy"><div class="img-placeholder"><img src="img/Abdelmajid Dolmy.jpg" alt="Abdelmajid Dolmy"></div></div>
         <div class="player-info">
           <div class="player-name">Abdelmajid Dolmy</div>
           <div class="player-pos">Meia-atacante</div>
@@ -823,7 +911,7 @@ body {
       </div>
 
       <div class="player-card">
-        <div class="player-avatar" id="av-bassir"><div class="img-placeholder"><img src="img/Salaheddine Bassir.jpg"></div></div>
+        <div class="player-avatar" id="av-bassir"><div class="img-placeholder"><img src="img/Salaheddine Bassir.jpg" alt="Salaheddine Bassir"></div></div>
         <div class="player-info">
           <div class="player-name">Salaheddine Bassir</div>
           <div class="player-pos">Atacante</div>
@@ -833,7 +921,7 @@ body {
       </div>
 
       <div class="player-card">
-        <div class="player-avatar" id="av-hadji"><div class="img-placeholder"><img src="img/Mustapha Hadji.webp"></div></div>
+        <div class="player-avatar" id="av-hadji"><div class="img-placeholder"><img src="img/Mustapha Hadji.webp" alt="Mustapha Hadji"></div></div>
         <div class="player-info">
           <div class="player-name">Mustapha Hadji</div>
           <div class="player-pos">Meia</div>
@@ -843,7 +931,7 @@ body {
       </div>
 
       <div class="player-card">
-        <div class="player-avatar" id="av-ziyech"><div class="img-placeholder"><img src="img/hakim ziyech.webp"></div></div>
+        <div class="player-avatar" id="av-ziyech"><div class="img-placeholder"><img src="img/hakim ziyech.webp" alt="Hakim Ziyech"></div></div>
         <div class="player-info">
           <div class="player-name">Hakim Ziyech</div>
           <div class="player-pos">Meia-atacante</div>
@@ -853,7 +941,7 @@ body {
       </div>
 
       <div class="player-card">
-        <div class="player-avatar" id="av-hakimi"><div class="img-placeholder"><img src="img/Achraf Hakimi.webp"></div></div>
+        <div class="player-avatar" id="av-hakimi"><div class="img-placeholder"><img src="img/Achraf Hakimi.webp" alt="Achraf Hakimi"></div></div>
         <div class="player-info">
           <div class="player-name">Achraf Hakimi</div>
           <div class="player-pos">Lateral-direito</div>
@@ -863,7 +951,7 @@ body {
       </div>
 
       <div class="player-card">
-        <div class="player-avatar" id="av-bounou"><div class="img-placeholder"><img src="img/Yassine Bounou.webp"></div></div>
+        <div class="player-avatar" id="av-bounou"><div class="img-placeholder"><img src="img/Yassine Bounou.webp" alt="Yassine Bounou"></div></div>
         <div class="player-info">
           <div class="player-name">Yassine Bounou</div>
           <div class="player-pos">Goleiro</div>
@@ -873,7 +961,7 @@ body {
       </div>
 
       <div class="player-card">
-        <div class="player-avatar" id="av-ennesy"><div class="img-placeholder"><img src="img/Youssef En-Nesyri.webp"></div></div>
+        <div class="player-avatar" id="av-ennesy"><div class="img-placeholder"><img src="img/Youssef En-Nesyri.webp" alt="Youssef En-Nesyri"></div></div>
         <div class="player-info">
           <div class="player-name">Youssef En-Nesyri</div>
           <div class="player-pos">Atacante</div>
@@ -881,88 +969,83 @@ body {
           <div class="player-desc">Artilheiro da seleção no Catar com 4 gols, incluindo o cabeceio impiedoso que eliminou Portugal na semifinal. Símbolo do poder ofensivo marroquino.</div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-content">
-      <h3>Marrocos 2026</h3>
-      <p>Uma jornada rumo à história no futebol mundial.</p>
-      <div class="footer-links">
-        <a href="pag2.html">História</a>
-        <a href="pag3.html">Jogadores</a>
-        <a href="pag4.html">Galeria</a>
-        <a href="pag5.html">Últimas notícias</a>
+      <div class="footer-section">
+        <h4>Marrocos 2026</h4>
+        <p>Site oficial dedicado à seleção marroquina rumo à Copa do Mundo 2026.</p>
       </div>
-      <div class="linha-footer"></div>
-      <p class="direitos">© 2026 Marrocos / Todos direitos reservados</p>
+
+      <div class="footer-section">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="pag1.html">Início</a></li>
+          <li><a href="pag2.html">História</a></li>
+          <li><a href="pag3.html">Jogadores</a></li>
+          <li><a href="pag4.html">Galeria</a></li>
+          <li><a href="pag5.html">Cidade Sede</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Seções Especiais</h4>
+        <ul>
+          <li><a href="pag1.html">Página Principal</a></li>
+          <li><a href="pag2.html">História Completa</a></li>
+          <li><a href="pag3.html">Elenco</a></li>
+          <li><a href="pag4.html">Galeria Cultural</a></li>
+          <li><a href="pag5.html">Cidade Sede</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Conecte-se</h4>
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Seleção Marroquina. Todos os direitos reservados.</p>
+      <p>Criado com <i class="fas fa-heart"></i> para honrar a força de uma nação.</p>
     </div>
   </footer>
 
   <script>
-     // Efeito de scroll no menu
-     window.addEventListener("scroll", function () {
-      const menu = document.querySelector(".menu");
+    (function() {
+      var menu = document.getElementById('main-menu');
+      var hamburger = document.getElementById('hamburger');
+      var navlinks = document.getElementById('navlinks');
 
-      if (window.scrollY > 50) {
-        menu.style.background = "rgba(0, 0, 0, 0.95)";
-        menu.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.5)";
-      } else {
-        menu.style.background = "rgba(0, 0, 0, 0.3)";
-        menu.style.boxShadow = "none";
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          menu.classList.add('scrolled');
+        } else {
+          menu.classList.remove('scrolled');
+        }
+      });
+
+      if (hamburger && navlinks) {
+        hamburger.addEventListener('click', function() {
+          hamburger.classList.toggle('open');
+          navlinks.classList.toggle('open');
+        });
+
+        navlinks.querySelectorAll('a').forEach(function(a) {
+          a.addEventListener('click', function() {
+            hamburger.classList.remove('open');
+            navlinks.classList.remove('open');
+          });
+        });
       }
-    });
-    // Hamburger menu
-    const hamburger = document.getElementById('hamburger');
-    const navlinks  = document.getElementById('navlinks');
-
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navlinks.classList.toggle('open');
-    });
-
-    function closeMenu() {
-      hamburger.classList.remove('open');
-      navlinks.classList.remove('open');
-    }
-
-
-    // Load player photos from Wikipedia API (free/open license images)
-    const players = [
-      { id: 'av-zaki',   wiki: 'Badou_Zaki' },
-      { id: 'av-dolmy',  wiki: 'Abdelmajid_Dolmy' },
-      { id: 'av-bassir', wiki: 'Salaheddine_Bassir' },
-      { id: 'av-hadji',  wiki: 'Mustapha_Hadji' },
-      { id: 'av-ziyech', wiki: 'Hakim_Ziyech' },
-      { id: 'av-hakimi', wiki: 'Achraf_Hakimi' },
-      { id: 'av-bounou', wiki: 'Yassine_Bounou' },
-      { id: 'av-ennesy', wiki: 'Youssef_En-Nesyri' },
-    ];
-
-    players.forEach(({ id, wiki }) => {
-      const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${wiki}`;
-      fetch(url)
-        .then(r => r.json())
-        .then(data => {
-          const thumb = data.thumbnail?.source;
-          if (!thumb) return;
-          const container = document.getElementById(id);
-          if (!container) return;
-          // Use a larger version: replace /100px- with /300px-
-          const bigThumb = thumb.replace(/\/\d+px-/, '/300px-');
-          const img = document.createElement('img');
-          img.src = bigThumb;
-          img.alt = data.title || '';
-          img.loading = 'lazy';
-          img.onerror = () => {}; // keep placeholder on error
-          container.innerHTML = '';
-          container.appendChild(img);
-        })
-        .catch(() => {});
-    });
+    })();
   </script>
-
 </body>
 </html>

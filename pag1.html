@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seleção Marroquina - Copa do Mundo 2026</title>
-    <link rel="shortcut icon" type="image/svg+xml" href="img/fivecon.png">
+    <link rel="shortcut icon" type="image/svg+xml" href="img/morocco.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -33,8 +33,14 @@
     padding: 12px 60px;
 }
 
-.logo { position: relative; z-index: 2000; }
-.logo img { height: 45px; }
+.logo { 
+    position: relative;
+    z-index: 2000; 
+    }
+
+.logo img { 
+    height: 45px;
+}
 
 .links {
     display: flex;
@@ -205,7 +211,7 @@
 <!-- MENU UNIFICADO -->
 <header class="menu" id="main-menu">
     <div class="logo">
-        <img src="img/favicon.svg" alt="Logo Marrocos">
+        <img src="img/morocco.png" alt="Logo Marrocos">
     </div>
     <nav class="links" id="navlinks">
         <a href="pag1.html" class="ativo">Início</a>
@@ -222,9 +228,21 @@
     <div class="main-wrapper">
 <!-- HERO SECTION -->
         <section class="hero" id="hero">
-            <video autoplay muted loop class="video-bg">
-                <source src="img/videoplayback1.mp4" type="video/mp4">
-            </video>
+            <!-- Carrossel de fundo -->
+            <div class="hero-carousel">
+                <div class="hero-slide active" style="background-image: url('https://i.ytimg.com/vi/GyueTJPWBhE/maxresdefault.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('https://i.ytimg.com/vi/gIkjCcwMfZc/maxresdefault.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('https://i.pinimg.com/originals/69/12/0f/69120f098bbad51079ed14884673b211.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('https://5287aa00874a313e299d-1850966fc307ff23e1e789aeafd2476b.ssl.cf5.rackcdn.com/PostImagem/34245/fotos-de-paisagens_o1f9f43uqg1iol1u491f86mpq19gse.jpg')"></div>
+            </div>
+
+            <!-- Indicadores -->
+            <div class="hero-dots">
+                <span class="hero-dot active" data-index="0"></span>
+                <span class="hero-dot" data-index="1"></span>
+                <span class="hero-dot" data-index="2"></span>
+                <span class="hero-dot" data-index="3"></span>
+            </div>
 
             <div class="hero-overlay"></div>
 
@@ -268,13 +286,13 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="img/img1.webp" class="d-block w-100" alt="Seleção Marroquina">
+                                    <img src="https://www.radiopampa.com.br/wp-content/uploads/2022/12/marrocos.jpeg" class="d-block w-100" alt="Seleção Marroquina">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/img2.jpg" class="d-block w-100" alt="Treinamento">
+                                    <img src="https://images.openai.com/static-rsc-4/acl3wW4rsvcOm6vbD_Ddkhbjni2JZKFshuW3ozoKcA4dUOHB3e6ZVXhYhgGwxO9h0PKWgJRBzMwf_siincS6FrbzP7i3mIzEqVcIHZzY3sjp5Go05pOlmLEADw8QsbvFY8l2lHj-qR2Yh70YlzMQPp5TcFGKV3C9AV0kE6VcW_auxc14Ru8lG6oYguvP6dbI?purpose=fullsize" class="d-block w-100" alt="Treinamento">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/img3.webp" class="d-block w-100" alt="Celebração">
+                                    <img src="https://images.openai.com/static-rsc-4/cHznUgj2EubAlGxeciQpJ99ajuJ4tydmwrRT_irrLWPQAbG8qE7ek6xSmDjQJSI5_HZBTE8ha-fLDXkGyaIcdrHdyVm4EbtrTeiaIul27SKC93vyezRqfd-uDfBnbr_xXvo3y7QkmHJ0_ighChR9xIX_KQKIe445Rww1mMYFawxEf-ZX6d7nmA75a3rPyb-0?purpose=fullsize" class="d-block w-100" alt="Celebração">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselAbout" data-bs-slide="prev">
@@ -396,7 +414,7 @@
                 <div class="row align-items-center mt-5">
                     <div class="col-lg-5" data-aos="zoom-in">
                         <div class="player-image-wrapper">
-                            <img src="img/img10.jpg.jpeg" alt="Achraf Hakimi" class="player-image">
+                            <img src="https://glaziang.com/wp-content/uploads/2022/12/Achraf-Hakimi-3-877x1024.jpeg" alt="Achraf Hakimi" class="player-image">
                         </div>
                     </div>
 
@@ -448,13 +466,13 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="img/img5.jpg" class="d-block w-100" alt="Cultura Marroquina">
+                                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada?w=846&h=564&fit=crop" class="d-block w-100" alt="Cultura Marroquina">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/img6.webp" class="d-block w-100" alt="Tradições">
+                                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=846&h=564&fit=crop" class="d-block w-100" alt="Tradições">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="img/img7.webp" class="d-block w-100" alt="Povo Marroquino">
+                                    <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=846&h=564&fit=crop" class="d-block w-100" alt="Povo Marroquino">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselCulture" data-bs-slide="prev">
@@ -525,10 +543,7 @@
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- CHAMADA FINAL -->
-        <section class="sec-cta" id="cta">
             <div class="container text-center">
                 <h2 data-aos="fade-up">Seja Parte Dessa História</h2>
                 <p data-aos="fade-up" data-aos-delay="100">
@@ -632,14 +647,60 @@
             margin-top: 0px;
         }
 
-        .video-bg {
+        /* HERO CAROUSEL */
+        .hero-carousel {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: 1;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1.4s ease-in-out;
+            transform: scale(1.05);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            animation: heroZoom 8s ease-in-out forwards;
+        }
+
+        @keyframes heroZoom {
+            0%   { transform: scale(1.05); }
+            100% { transform: scale(1.0); }
+        }
+
+        /* Indicadores (dots) */
+        .hero-dots {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .hero-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.45);
+            border: 2px solid #fff;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .hero-dot.active {
+            background: #C1272D;
+            transform: scale(1.35);
+            border-color: #C1272D;
         }
 
         .hero-overlay {
@@ -1450,6 +1511,41 @@
         <p>Criado com <i class="fas fa-heart"></i> para honrar a força de uma nação.</p>
     </div>
 </footer>
+
+<script>
+/* ── Hero Carousel ── */
+(function() {
+    var slides = document.querySelectorAll('.hero-slide');
+    var dots   = document.querySelectorAll('.hero-dot');
+    var current = 0;
+    var total   = slides.length;
+    var interval;
+
+    function goTo(index) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (index + total) % total;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+    }
+
+    function next() { goTo(current + 1); }
+
+    function startAuto() {
+        interval = setInterval(next, 5000);
+    }
+
+    dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+            clearInterval(interval);
+            goTo(parseInt(this.dataset.index));
+            startAuto();
+        });
+    });
+
+    startAuto();
+})();
+</script>
 
 <script>
 /* ── Menu scroll + hamburger unificado ── */

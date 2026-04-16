@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - Marrocos Copa 2026</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="img/marrocos.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cor-primaria: #C1272D;
+            --cor-verde: #006241;
+            --cor-dourado: #FFC72C;
+            --cor-escuro: #1a1a1a;
+            --cor-claro: #f5f5f5;
+            --cor-texto: #333;
+            --cor-texto-leve: #666;
+            --transicao: all 0.3s ease;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background: #fff;
+        }
+
+        .main-wrapper { overflow-x: hidden; }
+
+        /* MENU */
+        .menu {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        .menu.scrolled {
+            background: rgba(26, 26, 26, 0.97);
+            padding: 14px 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        .logo { position: relative; z-index: 2000; }
+        .logo img { height: 45px; }
+
+        .links { display: flex; gap: 37px; }
+
+        .links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 620;
+            position: relative;
+        }
+
+        .links a::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            background: #C1272d;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+
+        .links a:hover::after { width: 100%; }
+        .links a.ativo::after { width: 100%; }
+
+        /* HERO */
+        .hero-galeria {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 50%, #1a2d20 100%);
+        }
+
+        .hero-galeria::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=1600&q=80') center/cover no-repeat;
+            opacity: 0.35;
+        }
+
+        .hero-galeria-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(193,39,45,0.55), rgba(0,98,65,0.55));
+        }
+
+        .hero-galeria .conteudo {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .hero-galeria .conteudo h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-galeria .conteudo p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        /* BOTÕES */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicao);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary { background: var(--cor-primaria); color: #fff; }
+        .btn-primary:hover {
+            background: #a01f24;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(193,39,45,0.4);
+        }
+        .btn-outline {
+            border: 2px solid var(--cor-primaria);
+            color: var(--cor-primaria);
+            background: transparent;
+        }
+        .btn-outline:hover { background: var(--cor-primaria); color: #fff; }
+        .btn-secondary { background: var(--cor-verde); color: #fff; }
+        .btn-secondary:hover {
+            background: #004b31;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,98,65,0.4);
+        }
+        .btn i { margin-left: 0.5rem; }
+
+        /* SEÇÕES */
+        section { padding: 5rem 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--cor-texto-leve);
+            font-weight: 300;
+        }
+
+        /* FILTROS */
+        .filtros {
+            background: var(--cor-claro);
+            padding: 3rem 0 2rem;
+        }
+
+        .filtros-wrapper {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filtro-btn {
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            border: 2px solid var(--cor-primaria);
+            background: transparent;
+            color: var(--cor-primaria);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transicao);
+            font-size: 0.95rem;
+        }
+
+        .filtro-btn:hover,
+        .filtro-btn.ativo {
+            background: var(--cor-primaria);
+            color: #fff;
+        }
+
+        /* GALERIA GRID */
+        .sec-galeria { background: #fff; padding: 3rem 0 5rem; }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .galeria-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            background: #eee;
+        }
+
+        .galeria-item.grande {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .galeria-item:hover img { transform: scale(1.08); }
+
+        .galeria-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .galeria-item:hover .galeria-overlay { opacity: 1; }
+
+        .galeria-overlay h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .galeria-overlay p {
+            color: rgba(255,255,255,0.88);
+            font-size: 0.82rem;
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        .galeria-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tag-cultura { background: var(--cor-primaria); color: #fff; }
+        .tag-gastronomia { background: var(--cor-dourado); color: #1a1a1a; }
+        .tag-costumes { background: var(--cor-verde); color: #fff; }
+        .tag-arquitetura { background: #8b5e3c; color: #fff; }
+        .tag-natureza { background: #2e7d32; color: #fff; }
+
+        /* SEÇÃO CULTURA */
+        .sec-cultura { background: var(--cor-claro); }
+
+        .cultura-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .cultura-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: var(--transicao);
+        }
+
+        .cultura-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+        }
+
+        .cultura-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .cultura-card-body { padding: 1.5rem; }
+
+        .cultura-card-body .tag {
+            display: inline-block;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .cultura-card-body h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--cor-escuro);
+            margin-bottom: 0.7rem;
+        }
+
+        .cultura-card-body p {
+            font-size: 0.92rem;
+            color: var(--cor-texto-leve);
+            line-height: 1.6;
+        }
+
+        /* GASTRONOMIA */
+        .sec-gastronomia { background: #fff; }
+
+        .gastro-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .gastro-imagens {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .gastro-imagens img {
+            width: 100%;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .gastro-imagens img:first-child {
+            grid-column: span 2;
+            height: 220px;
+        }
+
+        .gastro-imagens img:not(:first-child) { height: 150px; }
+
+        .gastro-info h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--cor-primaria);
+            margin-bottom: 0.5rem;
+        }
+
+        .gastro-info .subtitle-text {
+            font-size: 1rem;
+            color: var(--cor-texto-leve);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .gastro-info p { margin-bottom: 1rem; color: var(--cor-texto); }
+
+        .pratos-lista {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .prato-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 0.9rem;
+            background: var(--cor-claro);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .prato-item i { color: var(--cor-dourado); font-size: 1rem; }
+
+        /* COSTUMES */
+        .sec-costumes { background: linear-gradient(135deg, var(--cor-escuro) 0%, #2d1b1b 100%); color: #fff; }
+
+        .sec-costumes .section-header h2 { color: var(--cor-dourado); }
+        .sec-costumes .subtitle { color: rgba(255,255,255,0.6); }
+
+        .costumes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .costume-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: var(--transicao);
+        }
+
+        .costume-card:hover {
+            background: rgba(193,39,45,0.15);
+            border-color: var(--cor-primaria);
+            transform: translateY(-6px);
+        }
+
+        .costume-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .costume-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--cor-dourado);
+            margin-bottom: 0.8rem;
+        }
+
+        .costume-card p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        /* DESTAQUES VISUAIS */
+        .sec-destaques { background: var(--cor-claro); }
+
+        .destaques-mosaic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .destaque-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #ddd;
+        }
+
+        .destaque-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            display: block;
+        }
+
+        .destaque-item:hover img { transform: scale(1.06); }
+
+        .destaque-item.tall img { height: 375px; }
+
+        .destaque-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+            padding: 1rem;
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* MODAL LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.aberto { display: flex; }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .lightbox-fechar {
+            position: absolute;
+            top: -3rem;
+            right: 0;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .lightbox-caption {
+            color: #fff;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        /* CTA */
+        .sec-cta {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-verde));
+            color: #fff;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .sec-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .sec-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .btn-branco {
+            background: #fff;
+            color: var(--cor-primaria);
+            font-weight: 700;
+        }
+
+        .btn-branco:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-branco {
+            border: 2px solid #fff;
+            color: #fff;
+            background: transparent;
+            font-weight: 600;
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+
+        .btn-outline-branco:hover {
+            background: #fff;
+            color: var(--cor-verde);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--cor-escuro);
+            color: #fff;
+            padding: 4rem 0 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-section h4,
+        .footer-section h5 {
+            margin-bottom: 1.2rem;
+            color: var(--cor-primaria);
+        }
+
+        .footer-section p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
+        }
+
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 0.8rem; }
+        .footer-section ul a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transicao);
+        }
+        .footer-section ul a:hover { color: var(--cor-primaria); }
+
+        .social-links { display: flex; gap: 1.5rem; }
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--cor-primaria);
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: var(--transicao);
+        }
+        .social-links a:hover {
+            background: var(--cor-verde);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        .footer-bottom p { margin: 0.5rem 0; }
+        .footer-bottom i { color: var(--cor-primaria); }
+
+        /* PLACEHOLDER IMGS (quando não há imagem real) */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #c8a882, #8b6914);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 3rem;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 992px) {
+            .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+            .galeria-item.grande { grid-column: span 2; }
+            .cultura-cards { grid-template-columns: repeat(2, 1fr); }
+            .gastro-wrapper { grid-template-columns: 1fr; }
+            .costumes-grid { grid-template-columns: repeat(2, 1fr); }
+            .destaques-mosaic { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .menu { padding: 20px 30px; }
+            .links { gap: 1.5rem; font-size: 0.85rem; }
+            .hero-galeria .conteudo h1 { font-size: 2.2rem; }
+            .galeria-grid { grid-template-columns: 1fr; }
+            .galeria-item.grande { grid-column: span 1; }
+            .cultura-cards { grid-template-columns: 1fr; }
+            .costumes-grid { grid-template-columns: 1fr 1fr; }
+            .pratos-lista { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            .menu { flex-direction: column; gap: 1rem; padding: 20px; }
+            .links { flex-direction: column; gap: 0.8rem; text-align: center; }
+            .costumes-grid { grid-template-columns: 1fr; }
+            .destaques-mosaic { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+        }
+    </style>
+<style>
+/* ═══════════════════════════════════════════════════════
+   MENU UNIFICADO
+═══════════════════════════════════════════════════════ */
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu.scrolled {
+    background: #fff !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    padding: 12px 60px;
+}
+
+.logo { position: relative; z-index: 2000; }
+.logo img { height: 45px; }
+
+.links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.menu.scrolled .links a {
+    color: #111 !important;
+}
+
+.links a::after {
+    content: "";
+    width: 0;
+    height: 2px;
+    background: #C1272D;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.links a:hover::after,
+.links a.ativo::after { width: 100%; }
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    z-index: 2000;
+}
+.hamburger span {
+    display: block;
+    width: 26px; height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+.menu.scrolled .hamburger span { background: #111; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 640px) {
+    .menu { padding: 16px 24px; }
+    .menu.scrolled { padding: 12px 24px; }
+    .hamburger { display: flex; }
+    .links {
+        position: fixed;
+        top: 0; right: -100%;
+        height: 100vh;
+        width: 70%;
+        max-width: 280px;
+        background: rgba(0,0,0,0.97);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.35s ease;
+        z-index: 150;
+    }
+    .links.open { right: 0; }
+    .links a { font-size: 1.2rem; color: #fff !important; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER UNIFICADO (estilo pag2)
+═══════════════════════════════════════════════════════ */
+.footer {
+    background: #000 !important;
+    color: #fff;
+    padding: 4rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1.2rem;
+    color: #C1272D;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.footer-section p {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li { margin-bottom: 0.8rem; }
+
+.footer-section ul a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul a:hover { color: #C1272D; }
+
+.footer .social-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    background: #C1272D;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.footer .social-links a:hover {
+    background: #006241;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem;
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+}
+
+.footer-bottom p { margin: 0.5rem 0; }
+.footer-bottom i { color: #C1272D; }
+</style>
+</head>
+<body>
+<!-- MENU UNIFICADO -->
+<header class="menu" id="main-menu">
+    <div class="logo">
+        <img src="img/favicon.svg">
+    </div>
+    <nav class="links" id="navlinks">
+        <a href="pag1.html">Início</a>
+        <a href="pag2.html">História</a>
+        <a href="pag3.html">Jogadores</a>
+        <a href="pag4.html">Galeria</a>
+        <a href="pag5.html">Cidade Sede</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+<div class="main-wrapper">
+
+    <!-- HERO -->
+    <section class="hero-galeria">
+        <div class="hero-galeria-overlay"></div>
+        <div class="conteudo">
+            <h1 data-aos="fade-up">Galeria de Marrocos</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Cultura, gastronomia, costumes e a alma de uma nação</p>
+        </div>
+    </section>
+
+    <!-- FILTROS -->
+    <div class="filtros">
+        <div class="container">
+            <div class="filtros-wrapper" data-aos="fade-up">
+                <button class="filtro-btn ativo" onclick="filtrar(this, 'todos')">Todos</button>
+                <button class="filtro-btn" onclick="filtrar(this, 'cultura')">Cultura</button>
+                <button class="filtro-btn" onclick="filtrar(this, 'gastronomia')">Gastronomia</button>
+                <button class="filtro-btn" onclick="filtrar(this, 'costumes')">Costumes</button>
+                <button class="filtro-btn" onclick="filtrar(this, 'arquitetura')">Arquitetura</button>
+                <button class="filtro-btn" onclick="filtrar(this, 'natureza')">Natureza</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALERIA PRINCIPAL -->
+    <section class="sec-galeria">
+        <div class="container">
+            <div class="galeria-grid" id="galeriaGrid">
+
+                <div class="galeria-item grande" data-categoria="cultura" data-aos="fade-up">
+                    <img src="https://c8.alamy.com/comp/AG3C5R/gnawa-performance-in-essaouira-at-the-gnawa-festival-AG3C5R.jpg" alt="Festival Gnawa" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i></div>
+                    <span class="galeria-tag tag-cultura">Cultura</span>
+                    <div class="galeria-overlay">
+                        <h4>Festival Gnawa — Essaouira</h4>
+                        <p>O Festival Gnawa e Músicas do Mundo de Essaouira é um dos maiores eventos culturais da África. Realizado anualmente, reúne artistas do Marrocos e de todo o continente africano para celebrar a música ancestral Gnawa — reconhecida pela UNESCO como Patrimônio Imaterial da Humanidade em 2019. Os sons dos guembri (alaúdes de três cordas) e dos krakeb (castanholas de metal) ecoam pelas ruelas brancas da cidade costeira, criando uma atmosfera hipnótica e espiritual que atrai milhares de visitantes de todo o mundo.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="gastronomia" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://cdn.tasteatlas.com/images/dishes/ae34fe326cd440caabba424b59a0c679.jpg" alt="Tajine Marroquino" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-utensils"></i></div>
+                    <span class="galeria-tag tag-gastronomia">Gastronomia</span>
+                    <div class="galeria-overlay">
+                        <h4>Tajine Tradicional</h4>
+                        <p>O tajine é muito mais que um prato — é o coração da culinária marroquina. Cozinhado lentamente no seu recipiente cônico de barro, preserva todos os aromas e sucos dos ingredientes. Feito com cordeiro, frango ou peixe, combinado com azeitonas, limão em conserva, amêndoas e um bouquet de especiarias como cúrcuma, cominho e canela, cada região do Marrocos tem a sua variação exclusiva desta receita milenar.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="arquitetura" data-aos="fade-up" data-aos-delay="150">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.q7aW9PYVLa7CU8AlKal-pwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Medina de Fez" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-mosque"></i></div>
+                    <span class="galeria-tag tag-arquitetura">Arquitetura</span>
+                    <div class="galeria-overlay">
+                        <h4>Medina de Fez — Fès el-Bali</h4>
+                        <p>Fundada no século IX, Fès el-Bali é considerada a cidade medieval mais bem preservada do mundo árabe e islâmico. Seu labirinto de mais de 9.000 ruelas abriga mesquitas, madrassas, fontes e os famosos curtumes Chouara — onde o couro é tingido de forma artesanal há mais de mil anos. A Universidade al-Qarawiyyin, fundada em 859 d.C., é reconhecida como a mais antiga do mundo em atividade contínua.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="costumes" data-aos="fade-up">
+                    <img src="https://i.pinimg.com/originals/81/bf/dc/81bfdc1efb9e80e9988c209e319c6a4c.png" alt="Djellaba" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-tshirt"></i></div>
+                    <span class="galeria-tag tag-costumes">Costumes</span>
+                    <div class="galeria-overlay">
+                        <h4>Djellaba & Babouche</h4>
+                        <p>A djellaba é a veste tradicional marroquina por excelência — uma longa túnica com capuz usada tanto por homens quanto por mulheres, confeccionada em lã no inverno e em algodão leve no verão. Combinada com as babouche (sandálias de couro feitas à mão em Fez), forma o traje clássico que ainda é visto diariamente nas medinas. Durante festividades e casamentos, versões bordadas a ouro e prata, chamadas caftans, revelam a maestria dos artesãos marroquinos.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item grande" data-categoria="natureza" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://as2.ftcdn.net/v2/jpg/05/51/63/89/1000_F_551638978_e14ayu3Ff7g6D3C2hGimEDs0A9esMNP5.jpg" alt="Deserto do Saara" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-mountain"></i></div>
+                    <span class="galeria-tag tag-natureza">Natureza</span>
+                    <div class="galeria-overlay">
+                        <h4>Deserto do Saara — Erg Chebbi</h4>
+                        <p>As dunas de Erg Chebbi, próximas à cidade de Merzouga, são um dos espetáculos naturais mais deslumbrantes de Marrocos. Com até 150 metros de altura e coloração que vai do dourado ao alaranjado intenso ao pôr do sol, essas dunas de areia fina fazem parte do maior deserto quente do planeta. Passeios de camelo ao amanhecer, noites em acampamentos beduínos sob um céu repleto de estrelas e a experiência silenciosa e meditativa do deserto fazem deste lugar um destino inesquecível para qualquer viajante.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="gastronomia" data-aos="fade-up">
+                    <img src="https://thumbs.dreamstime.com/b/souk-colorido-das-especiarias-em-medina-c-marraquexe-marrocos-69841230.jpg" alt="Souks de Especiarias" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-pepper-hot"></i></div>
+                    <span class="galeria-tag tag-gastronomia">Gastronomia</span>
+                    <div class="galeria-overlay">
+                        <h4>Souks de Especiarias</h4>
+                        <p>Os souks de especiarias de Marrakech e Fez são uma explosão sensorial de cores, perfumes e texturas. Montes de açafrão, curcuma, pimenta rosa, ras el hanout (uma mistura com até 30 especiarias), flor de laranjeira seca e pétalas de rosa enchem as bancas dos vendedores. Cada especiaria carrega história: o ras el hanout, cujo nome significa "o melhor da loja", já foi usado como moeda de troca nas antigas rotas das caravanas que cruzavam o Saara.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="arquitetura" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.W--sSUgGitFzbMBPMRzWjQHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Mesquita Hassan II" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-landmark"></i></div>
+                    <span class="galeria-tag tag-arquitetura">Arquitetura</span>
+                    <div class="galeria-overlay">
+                        <h4>Mesquita Hassan II — Casablanca</h4>
+                        <p>Com um minarete de 210 metros — o mais alto do mundo —, a Mesquita Hassan II é uma obra monumental construída parcialmente sobre o Oceano Atlântico. Inaugurada em 1993, foi construída por 10.000 artesãos e 2.500 operários marroquinos ao longo de seis anos. Seu piso de vidro permite que os fiéis orem literalmente sobre as águas do oceano, em referência ao versículo corânico que diz que o trono de Deus estava sobre a água. Comporta até 105.000 fiéis dentro e ao redor de suas dependências.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="cultura" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://evmorocco.com/wp-content/uploads/2022/08/our-morocco-23.jpg" alt="Fantasias de Cavaleiros" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-horse"></i></div>
+                    <span class="galeria-tag tag-cultura">Cultura</span>
+                    <div class="galeria-overlay">
+                        <h4>Fantasia — Tbourida</h4>
+                        <p>A Tbourida, também conhecida como Fantasia, é um espetáculo equestre de raízes guerreiras inscritas na história berbere e árabe. Grupos de cavaleiros vestidos com trajes tradicionais brancos galopam em sincronia perfeita antes de dispararem suas espingardas ao mesmo tempo, criando uma explosão de pólvora no ar. Proclamada Patrimônio Cultural Imaterial da Humanidade pela UNESCO em 2021, a Tbourida é realizada em celebrações religiosas, casamentos e festivais por todo o território marroquino.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="costumes" data-aos="fade-up">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.xIPexEQjGrdaXq3fYGY9KQHaEJ?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Henna" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-paint-brush"></i></div>
+                    <span class="galeria-tag tag-costumes">Costumes</span>
+                    <div class="galeria-overlay">
+                        <h4>Arte da Henna — Naqsh</h4>
+                        <p>O naqsh (arte de desenhar com henna) é uma tradição feminina milenar no Marrocos, transmitida de mãe para filha. Nas vésperas de casamentos — durante a Laylat al-Henna — a noiva tem as mãos e os pés ornamentados com intrincados padrões florais e geométricos que simbolizam boa sorte, fertilidade e proteção. A pasta de henna, feita com folhas secas da planta Lawsonia inermis misturadas com água de rosas e limão, tinge a pele por semanas com um tom entre o laranja e o bordô intenso.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="natureza" data-aos="fade-up" data-aos-delay="150">
+                    <img src="https://i1.wp.com/www.essemundoenosso.com.br/wp-content/uploads/2016/04/cidade-azul-marrocos-1.jpg?resize=740%2C494&ssl=1" alt="Chefchaouen" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-mountain"></i></div>
+                    <span class="galeria-tag tag-natureza">Natureza</span>
+                    <div class="galeria-overlay">
+                        <h4>Chefchaouen — A Cidade Azul</h4>
+                        <p>Encravada entre as montanhas do Rif, Chefchaouen é conhecida mundialmente pelas suas ruelas pintadas em diferentes tons de azul — do índigo ao turquesa, do azul celeste ao quase branco. Fundada em 1471, a cidade foi pintada de azul pelos judeus sefarditas refugiados da Espanha, que associavam a cor ao céu e à espiritualidade. Hoje, a "Cidade Azul" é um dos destinos fotográficos mais populares do mundo, e sua medina histórica faz parte da lista de Patrimônio Mundial da UNESCO.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item" data-categoria="arquitetura" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://th.bing.com/th/id/R.720bae2afa5706bcf35f9c9a35d23248?rik=qSNH3mxXNSVrWA&pid=ImgRaw&r=0" alt="Kasbah Ait Ben Haddou" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-landmark"></i></div>
+                    <span class="galeria-tag tag-arquitetura">Arquitetura</span>
+                    <div class="galeria-overlay">
+                        <h4>Kasbah Aït Benhaddou — UNESCO</h4>
+                        <p>Esta fortaleza de adobe às margens do rio Ounila é um dos exemplos mais notáveis da arquitetura de terra do sul marroquino. Inscrita na lista do Patrimônio Mundial da UNESCO em 1987, a Kasbah Aït Benhaddou serviu de cenário para filmes icônicos como Gladiador, Lawrence da Arábia e a série Game of Thrones. Suas torres e casarões em ocre avermelhado, construídos entre os séculos XVII e XVIII, contrastam de forma deslumbrante com o deserto dourado ao fundo e o verde das plantações no vale.</p>
+                    </div>
+                </div>
+
+                <div class="galeria-item grande" data-categoria="cultura" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://www.marraquexe.net/imagens/Praca-Jemaa-el-Fna-em-Marrakech-1024x615.jpg" alt="Praça Djemaa el-Fna" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none"><i class="fas fa-image"></i></div>
+                    <span class="galeria-tag tag-cultura">Cultura</span>
+                    <div class="galeria-overlay">
+                        <h4>Praça Djemaa el-Fna — Marrakech</h4>
+                        <p>Declarada pela UNESCO como Obra-Prima do Patrimônio Oral e Intangível da Humanidade, a Djemaa el-Fna é o coração pulsante de Marrakech. De dia, encantadores de serpentes, contadores de histórias (halqa), vendedores de suco de laranja e tatuadoras de henna dominam o espaço. À noite, a praça se transforma num imenso restaurante a céu aberto, com centenas de barracas de fumaça branca onde se serve harira, espetinhos, caracóis temperados e carne de cordeiro assada. Nenhuma visita ao Marrocos é completa sem mergulhar no caos organizado e mágico desta praça milenar.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURA -->
+    <section class="sec-cultura">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Riqueza Cultural</h2>
+                <p class="subtitle">Uma civilização milenar entre o Mediterrâneo e o Atlântico</p>
+            </div>
+            <div class="cultura-cards">
+
+                <div class="cultura-card" data-aos="fade-up">
+                    <img src="https://kuwaittimes.com/uploads/imported_images/uploads/2023/07/13291.jpg" alt="Música Gnawa" class="cultura-card-img"
+                         onerror="this.src=''; this.style.height='160px'; this.style.background='linear-gradient(135deg,#C1272D,#8b0000)'; this.alt=''">
+                    <div class="cultura-card-body">
+                        <span class="tag tag-cultura" style="background:#C1272D;color:#fff">Música</span>
+                        <h4>Música Gnawa</h4>
+                        <p>Originada de escravos africanos trazidos ao Marrocos, a música Gnawa é uma fusão espiritual de ritmos, cânticos e dança. Reconhecida como Patrimônio Imaterial da UNESCO em 2019.</p>
+                    </div>
+                </div>
+
+                <div class="cultura-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.zZ0x9nuUfgcME9ilFV9FdAHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Artesanato" class="cultura-card-img"
+                         onerror="this.src=''; this.style.height='160px'; this.style.background='linear-gradient(135deg,#8b5e3c,#5c3d1e)'; this.alt=''">
+                    <div class="cultura-card-body">
+                        <span class="tag" style="background:#8b5e3c;color:#fff">Artesanato</span>
+                        <h4>Artesanato Zellige</h4>
+                        <p>Mosaicos de azulejos coloridos que adornam palácios, mesquitas e fontes. Cada peça é cortada manualmente com precisão milimétrica, numa tradição passada de geração em geração.</p>
+                    </div>
+                </div>
+
+                <div class="cultura-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://mejormarruecos.com/wp-content/uploads/2025/03/Idioma-de-Marruecos-scaled.jpg" alt="Línguas" class="cultura-card-img"
+                         onerror="this.src=''; this.style.height='160px'; this.style.background='linear-gradient(135deg,#006241,#003d28)'; this.alt=''">
+                    <div class="cultura-card-body">
+                        <span class="tag tag-costumes" style="background:#006241;color:#fff">Idiomas</span>
+                        <h4>Diversidade Linguística</h4>
+                        <p>Marrocos é um mosaico de idiomas: árabe clássico, darija (árabe marroquino), berbere (tamazight), francês e espanhol coexistem, refletindo séculos de influências cruzadas.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GASTRONOMIA -->
+    <section class="sec-gastronomia">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Gastronomia Marroquina</h2>
+                <p class="subtitle">Sabores que contam histórias de séculos</p>
+            </div>
+            <div class="gastro-wrapper">
+                <div class="gastro-imagens" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?w=700&q=80" alt="Couscous" onerror="this.style.background='linear-gradient(135deg,#FFC72C,#b8860b)';this.src=''">
+                    <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=700&q=80" alt="Bastilla" onerror="this.style.background='linear-gradient(135deg,#C1272D,#8b0000)';this.src=''">
+                    <img src="https://cdn.guiadonomadedigital.com/wp-content/uploads/2018/08/comida-marrocos-Zaalouk-flickr.jpg" alt="Harira" onerror="this.style.background='linear-gradient(135deg,#006241,#003d28)';this.src=''">
+                </div>
+                <div class="gastro-info" data-aos="fade-left">
+                    <h3>Uma Cozinha Única no Mundo</h3>
+                    <p class="subtitle-text">Fusão perfeita de sabores berberes, árabes, mouriscos e mediterrâneos</p>
+                    <p>A culinária marroquina é reconhecida mundialmente por seus aromas intensos, especiarias exóticas e técnicas de preparo ancestrais. O uso de cominho, gengibre, açafrão, canela e água de rosas transforma cada refeição numa experiência sensorial inesquecível.</p>
+                    <p>As refeições são momento de reunião familiar e hospitalidade — servir bem os convidados é uma honra profunda na cultura marroquina.</p>
+                    <div class="pratos-lista">
+                        <div class="prato-item"><i class="fas fa-star"></i> Tajine de Cordeiro</div>
+                        <div class="prato-item"><i class="fas fa-star"></i> Couscous Sexta-Feira</div>
+                        <div class="prato-item"><i class="fas fa-star"></i> Bastilla de Pombo</div>
+                        <div class="prato-item"><i class="fas fa-star"></i> Harira (sopa)</div>
+                        <div class="prato-item"><i class="fas fa-star"></i> Chá de Menta</div>
+                        <div class="prato-item"><i class="fas fa-star"></i> Pastéis de Mel</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COSTUMES E TRADIÇÕES -->
+    <section class="sec-costumes">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Costumes & Tradições</h2>
+                <p class="subtitle">Rituais e valores que formam a identidade marroquina</p>
+            </div>
+            <div class="costumes-grid">
+
+                <div class="costume-card" data-aos="fade-up">
+                    <div class="costume-icon">🕌</div>
+                    <h4>Azan — O Chamado</h4>
+                    <p>Cinco vezes ao dia, o chamado para a oração ressoa pelas medinas. A fé islâmica é o alicerce da cultura e da hospitalidade marroquinas.</p>
+                </div>
+
+                <div class="costume-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="costume-icon">🫖</div>
+                    <h4>Cerimônia do Chá</h4>
+                    <p>Receber com chá de menta é um ritual de respeito. "A primeira xícara é amarga como a vida, a segunda doce como o amor, a terceira suave como a morte."</p>
+                </div>
+
+                <div class="costume-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="costume-icon">🎊</div>
+                    <h4>Casamento Marroquino</h4>
+                    <p>Celebrações que duram até uma semana, com henna, músicas Andalusas, djellabas bordadas e banquetes que reunem toda a comunidade.</p>
+                </div>
+
+                <div class="costume-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="costume-icon">🌙</div>
+                    <h4>Ramadã</h4>
+                    <p>Mês sagrado de jejum, reflexão e solidariedade. O iftar (quebra do jejum) ao crepúsculo é um momento de comunhão com a família e vizinhos.</p>
+                </div>
+
+                <div class="costume-card" data-aos="fade-up">
+                    <div class="costume-icon">🐑</div>
+                    <h4>Aid Al-Adha</h4>
+                    <p>A festa do sacrifício, onde famílias compartilham carne com os mais necessitados. Um dos mais importantes eventos do calendário islâmico.</p>
+                </div>
+
+                <div class="costume-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="costume-icon">🏺</div>
+                    <h4>Hammam — Banho Ritual</h4>
+                    <p>O banho público turco é uma instituição social. Muito mais que higiene, é um momento de relaxamento, conversa e cuidado com o corpo.</p>
+                </div>
+
+                <div class="costume-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="costume-icon">🎨</div>
+                    <h4>Henna & Kohl</h4>
+                    <p>Mulheres adornam mãos e pés com intrincados desenhos de henna em festas. O kohl (delineador preto) é usado há milênios tanto por estética quanto proteção.</p>
+                </div>
+
+                <div class="costume-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="costume-icon">🌺</div>
+                    <h4>Hospitalidade — Karama</h4>
+                    <p>Em Marrocos, o hóspede é sagrado. Karama (dignidade e generosidade) dita que um visitante nunca deve sair com fome ou sem ter sido bem recebido.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="sec-cta">
+        <div class="container">
+            <h2 data-aos="fade-up">Explore Mais Sobre Marrocos</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Conheça a cidade sede marroquina da Copa 2026 e tudo sobre a seleção que encantou o mundo.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
+                <a href="pag5.html" class="btn btn-branco">Ver Cidade Sede <i class="fas fa-map-marker-alt"></i></a>
+                <a href="pag3.html" class="btn-outline-branco">Conhecer Jogadores <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="fecharLightbox(event)">
+    <div class="lightbox-content">
+        <button class="lightbox-fechar" onclick="document.getElementById('lightbox').classList.remove('aberto')">&times;</button>
+        <img id="lightboxImg" src="" alt="">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    AOS.init({ once: true, duration: 700 });
+
+    // Menu scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.menu');
+        if (window.scrollY > 50) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+    });
+
+    // Filtro galeria
+    function filtrar(btn, categoria) {
+        document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        document.querySelectorAll('.galeria-item').forEach(item => {
+            if (categoria === 'todos' || item.dataset.categoria === categoria) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+
+    // Lightbox
+    document.querySelectorAll('.galeria-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            const caption = item.querySelector('.galeria-overlay h4');
+            if (img && img.src && !img.src.includes('undefined')) {
+                document.getElementById('lightboxImg').src = img.src;
+                document.getElementById('lightboxCaption').textContent = caption ? caption.textContent : '';
+                document.getElementById('lightbox').classList.add('aberto');
+            }
+        });
+    });
+
+    function fecharLightbox(e) {
+        if (e.target === document.getElementById('lightbox')) {
+            document.getElementById('lightbox').classList.remove('aberto');
+        }
+    }
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') document.getElementById('lightbox').classList.remove('aberto');
+    });
+</script>
+<!-- FOOTER UNIFICADO -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Marrocos 2026</h4>
+            <p>Site oficial dedicado à seleção marroquina rumo à Copa do Mundo 2026.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Navegação</h4>
+            <ul>
+                <li><a href="pag1.html">Início</a></li>
+                <li><a href="pag2.html">História</a></li>
+                <li><a href="pag3.html">Jogadores</a></li>
+                <li><a href="pag4.html">Galeria</a></li>
+                <li><a href="pag5.html">Cidade Sede</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Seções Especiais</h4>
+            <ul>
+                <li><a href="pag1.html">Página Principal</a></li>
+                <li><a href="pag2.html">História Completa</a></li>
+                <li><a href="pag3.html">Elenco</a></li>
+                <li><a href="pag4.html">Galeria Cultural</a></li>
+                <li><a href="pag5.html">Cidade Sede</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h4>Conecte-se</h4>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Seleção Marroquina. Todos os direitos reservados.</p>
+        <p>Criado com <i class="fas fa-heart"></i> para honrar a força de uma nação.</p>
+    </div>
+</footer>
+<script>
+/* ── Menu scroll + hamburger unificado ── */
+(function() {
+    var menu = document.getElementById('main-menu');
+    var hamburger = document.getElementById('hamburger');
+    var navlinks = document.getElementById('navlinks');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            menu.classList.add('scrolled');
+        } else {
+            menu.classList.remove('scrolled');
+        }
+    });
+
+    if (hamburger) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('open');
+            navlinks.classList.toggle('open');
+        });
+        navlinks.querySelectorAll('a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                hamburger.classList.remove('open');
+                navlinks.classList.remove('open');
+            });
+        });
+    }
+})();
+</script>
+</body>
+</html>

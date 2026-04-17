@@ -3,48 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidade Sede — Marrocos Copa 2026</title>
+    <title>Jogadores - Copa do Mundo Marrocos 2026</title>
     <link rel="shortcut icon" type="image/svg+xml" href="img/morocco.png">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <style>
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         :root {
             --cor-primaria: #C1272D;
-            --cor-verde: #006241;
-            --cor-dourado: #FFC72C;
-            --cor-escuro: #1a1a1a;
-            --cor-claro: #f5f5f5;
-            --cor-texto: #333;
-            --cor-texto-leve: #666;
-            --transicao: all 0.3s ease;
+            --verde: #00A651;
+            --vermelho: #C1272D;
+            --ouro: #ffffff;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
+            background: #000;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--cor-texto);
-            background: #fff;
+            overflow-x: hidden;
         }
-
-        .main-wrapper { overflow-x: hidden; }
 
         /* MENU */
         .menu {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 22px 60px;
+            padding: 20px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -183,1342 +177,1168 @@
         }
 
         /* HERO */
-        .hero {
+        .inicio header {
             position: relative;
+            background: #000;
+            overflow: hidden;
+            padding: 18rem 2rem 8rem;
+            text-align: center;
+        }  
+
+        .inicio header::before {
+           content: '';
+           position: absolute;
+           inset: 0;
+           background: url('https://www.quadrodemedalhas.com/images/copa-do-mundo/selecao-marrocos-2018.jpg') center/cover no-repeat;
+           opacity: 0.4;
+        }
+
+        .inicio header::after {
+           content: '';
+           position: absolute;
+           inset: 0;
+           background: linear-gradient(135deg, rgba(193,39,45,0.6), rgba(0,98,65,0.5));
+        }
+
+        .inicio header h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: clamp(2.2rem, 7vw, 5rem);
+            color: #fff;
+            letter-spacing: 0.04em;
+            line-height: 1.05;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        }
+
+        .inicio header h1 span {
+            color: var(--ouro);
+            display: block;
+            font-style: italic;
+        }
+
+        .inicio .header-sub {
+            margin-top: 1rem;
+            color: rgba(255,255,255,0.75);
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flag-stripe {
+            display: flex;
+            height: 6px;
+        }
+
+        .flag-stripe div {
+            flex: 1;
+        }
+
+        .flag-stripe .s1 { background: var(--vermelho); }
+        .flag-stripe .s2 { background: var(--ouro); }
+        .flag-stripe .s3 { background: var(--vermelho); }
+
+        /* SEÇÕES */
+        .secao-info,
+        .secao-staff,
+        .secao-stats,
+        .secao-grupo {
+            padding: 80px 20px;
+        }
+
+        .verde {
+            background: #000000;
+            color: white;
+        }
+
+        .branco {
+            background: #FFFFFF;
+            color: #333;
+        }
+
+        .vermelho {
+            background: #C1272D;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-grid,
+        .staff-grid,
+        .grupo-info {
+            display: grid;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-grid,
+        .grupo-info {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .staff-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .secao-info h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .secao-info p,
+        .grupo-card p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .secao-staff h2,
+        .secao-stats h2,
+        .secao-grupo h2 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .secao-staff h2 {
+            color: #C1272D;
+        }
+
+        .secao-stats h2,
+        .secao-grupo h2 {
+            color: white;
+        }
+
+        .staff-card {
+            background: #f9f9f9;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .staff-imagem {
+            overflow: hidden;
+            background: #000;
+            height: 300px;
+        }
+
+        .staff-imagem img {
             width: 100%;
-            height: 100vh;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .staff-card h3 {
+            color: #000;
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .staff-card .cargo {
+            color: #00A651;
+            font-weight: 600;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .staff-card .descricao {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .stat-box p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .grupo-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .grupo-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .objetivos-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .objetivos-list li {
+            font-size: 16px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* JOGADORES */
+        .secao-jogadores {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, white 0%, white 1%, white 60%, black 100%);
+        }
+
+        .jogadores-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .jogadores-header h1 {
+            font-size: 48px;
+            color: #00a651;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .jogadores-header p {
+            font-size: 18px;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .busca-container {
+            max-width: 600px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            position: sticky;
+            top: 110px;
+            z-index: 999;
+        }
+
+        .busca-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid #00A651;
+            border-radius: 12px;
+            padding: 15px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .busca-wrapper:focus-within {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #C1272D;
+            box-shadow: 0 0 20px rgba(0, 166, 81, 0.2);
+        }
+
+        .busca-wrapper i {
+            color: #00A651;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .busca-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #00A651;
+            font-size: 16px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .busca-input::placeholder {
+            color: #888;
+        }
+
+        .limpar-busca {
+            background: none;
+            border: none;
+            color: #C1272D;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 0;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .limpar-busca:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+
+        .resultado-busca {
+            text-align: center;
+            color: #C1272D;
+            font-size: 14px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .resultado-busca.show {
+            display: block;
+        }
+
+        .jogador-card.hidden,
+        .posicao-grupo.vazio {
+            display: none;
+        }
+
+        .jogadores-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .posicao-grupo {
+            margin-bottom: 80px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .posicao-grupo h2 {
+            font-size: 28px;
+            color: #00A651;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #C1272D;
+        }
+
+        .jogadores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .jogador-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .jogador-card:hover {
+            transform: translateY(-12px);
+            border-color: #00A651;
+            box-shadow: 0 20px 40px rgba(0, 166, 81, 0.2);
+        }
+
+        .card-imagem {
+            position: relative;
+            overflow: hidden;
+            background: black;
+            height: 350px;
+        }
+
+        .card-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .jogador-card:hover .card-imagem img {
+            transform: scale(1.1);
+        }
+
+        .numero {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #C1272D;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background: #1a1a1a;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=1600&q=80') center/cover no-repeat;
-            opacity: 0.4;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(193,39,45,0.6), rgba(0,98,65,0.55));
-        }
-
-        .conteudo {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            color: #fff;
-            max-width: 800px;
-            padding: 2rem;
-        }
-
-        .conteudo .badge-cidade {
-            display: inline-block;
-            background: var(--cor-dourado);
-            color: var(--cor-escuro);
-            padding: 0.4rem 1.2rem;
-            border-radius: 20px;
+            font-size: 20px;
             font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(193, 39, 45, 0.4);
         }
 
-        .conteudo h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-            line-height: 1.1;
-        }
-
-        .conteudo .subtitulo-hero {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-
-        .conteudo p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-            font-weight: 300;
-        }
-
-        /* BOTÕES */
-        .btn {
-            display: inline-block;
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            text-decoration: none;
+        .jogador-card h3 {
+            color: white;
+            font-size: 18px;
             font-weight: 600;
-            transition: var(--transicao);
-            border: none;
-            cursor: pointer;
+            padding: 20px 15px 5px;
+            margin: 0;
+        }
+
+        .jogador-card p {
+            margin: 5px 15px;
+            font-size: 14px;
+            padding-bottom: 15px;
+        }
+
+        .posicao {
+            color: #00A651;
+            font-weight: 600;
+        }
+
+        .clube {
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #000 !important;
+            color: #fff;
+            padding: 4rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.2rem;
+            color: #C1272D;
+            font-weight: 700;
             font-size: 1rem;
-        }
-        .btn-primary { background: var(--cor-primaria); color: #fff; }
-        .btn-primary:hover {
-            background: #a01f24;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(193,39,45,0.4);
-        }
-        .btn-outline {
-            border: 2px solid var(--cor-primaria);
-            color: var(--cor-primaria);
-            background: transparent;
-        }
-        .btn-outline:hover { background: var(--cor-primaria); color: #fff; }
-        .btn-secondary { background: var(--cor-verde); color: #fff; }
-        .btn-secondary:hover {
-            background: #004b31;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,98,65,0.4);
-        }
-        .btn i { margin-left: 0.5rem; }
-
-        /* SEÇÕES */
-        section { padding: 5rem 0; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .section-header { text-align: center; margin-bottom: 3rem; }
-        .section-header h2 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--cor-primaria);
-            margin-bottom: 1rem;
-        }
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--cor-texto-leve);
-            font-weight: 300;
-        }
-
-        /* STATS RÁPIDOS */
-        .sec-stats {
-            background: var(--cor-escuro);
-            padding: 3rem 0;
-        }
-
-        .stats-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0;
-        }
-
-        .stat-item {
-            flex: 1;
-            min-width: 180px;
-            max-width: 240px;
-            text-align: center;
-            padding: 2rem 1.5rem;
-            border-right: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-item:last-child { border-right: none; }
-
-        .stat-num {
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: var(--cor-dourado);
-            line-height: 1;
-            margin-bottom: 0.4rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.65);
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
-        /* SOBRE A CIDADE */
-        .sec-sobre { background: #fff; }
-
-        .sobre-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .footer-section p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.6;
         }
 
-        .sobre-imagens {
-            position: relative;
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .sobre-img-main {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 16px;
-        }
-
-        .sobre-img-float {
-            position: absolute;
-            bottom: -2rem;
-            right: -2rem;
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 4px solid #fff;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-        }
-
-        .sobre-texto h3 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--cor-primaria);
-            margin-bottom: 0.5rem;
-        }
-
-        .sobre-texto .subtitle-text {
-            font-size: 1rem;
-            color: var(--cor-texto-leve);
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .sobre-texto p { margin-bottom: 1rem; color: var(--cor-texto); }
-
-        .info-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
-        }
-
-        .info-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--cor-claro);
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--cor-texto);
-        }
-
-        .info-badge i { color: var(--cor-primaria); }
-
-        /* ESTÁDIO */
-        .sec-estadio { background: var(--cor-claro); }
-
-        .estadio-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .estadio-info h3 {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--cor-primaria);
-            margin-bottom: 0.5rem;
-        }
-
-        .estadio-info .subtitle-text {
-            color: var(--cor-texto-leve);
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        .estadio-info p { margin-bottom: 1rem; }
-
-        .estadio-specs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .spec-item {
-            background: #fff;
-            border-radius: 10px;
-            padding: 1rem 1.2rem;
-            border-left: 4px solid var(--cor-primaria);
-        }
-
-        .spec-item .spec-valor {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--cor-primaria);
-        }
-
-        .spec-item .spec-nome {
-            font-size: 0.82rem;
-            color: var(--cor-texto-leve);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-
-        .estadio-img-wrapper { position: relative; }
-
-        .estadio-img-main {
-            width: 100%;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-
-        .estadio-badge {
-            position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
-            background: var(--cor-primaria);
-            color: #fff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        /* CIDADES AUXILIARES */
-        .sec-cidades { background: #fff; }
-
-        .cidades-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .cidade-card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: var(--transicao);
-            background: #fff;
-        }
-
-        .cidade-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.14);
-        }
-
-        .cidade-card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .cidade-card-body { padding: 1.5rem; }
-
-        .cidade-card-body h4 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--cor-primaria);
-            margin-bottom: 0.3rem;
-        }
-
-        .cidade-card-body .cidade-info {
-            display: flex;
-            gap: 1rem;
+        .footer-section ul li {
             margin-bottom: 0.8rem;
         }
 
-        .cidade-info span {
-            font-size: 0.82rem;
-            color: var(--cor-texto-leve);
+        .footer-section ul a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul a:hover {
+            color: #C1272D;
+        }
+
+        .footer .social-links {
             display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .cidade-info i { color: var(--cor-primaria); }
-
-        .cidade-card-body p {
-            font-size: 0.9rem;
-            color: var(--cor-texto-leve);
-            line-height: 1.55;
-        }
-
-        /* PONTOS TURÍSTICOS */
-        .sec-turismo {
-            background: linear-gradient(135deg, var(--cor-escuro), #2d1b1b);
-            color: #fff;
-        }
-
-        .sec-turismo .section-header h2 { color: var(--cor-dourado); }
-        .sec-turismo .subtitle { color: rgba(255,255,255,0.6); }
-
-        .turismo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
-            margin-top: 3rem;
         }
 
-        .turismo-item {
-            display: flex;
-            gap: 1.2rem;
-            align-items: flex-start;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: var(--transicao);
-        }
-
-        .turismo-item:hover {
-            background: rgba(193,39,45,0.12);
-            border-color: var(--cor-primaria);
-        }
-
-        .turismo-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--cor-primaria);
-            border-radius: 12px;
-            display: flex;
+        .footer .social-links a {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-
-        .turismo-info h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--cor-dourado);
-            margin-bottom: 0.4rem;
-        }
-
-        .turismo-info p {
-            font-size: 0.88rem;
-            color: rgba(255,255,255,0.7);
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* CLIMA & LOGÍSTICA */
-        .sec-logistica { background: var(--cor-claro); }
-
-        .logistica-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .logistica-card {
-            background: #fff;
-            border-radius: 14px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            transition: var(--transicao);
-        }
-
-        .logistica-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .logistica-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .logistica-card h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--cor-primaria);
-            margin-bottom: 0.6rem;
-        }
-
-        .logistica-card p {
-            font-size: 0.88rem;
-            color: var(--cor-texto-leve);
-            line-height: 1.5;
-        }
-
-        /* TIMELINE DE JOGOS */
-        .sec-jogos { background: #fff; }
-
-        .jogos-lista {
-            margin-top: 3rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .jogo-item {
-            display: grid;
-            grid-template-columns: 130px 1fr auto;
-            align-items: center;
-            gap: 1.5rem;
-            background: var(--cor-claro);
-            border-radius: 12px;
-            padding: 1.2rem 1.8rem;
-            transition: var(--transicao);
-            border-left: 4px solid var(--cor-primaria);
-        }
-
-        .jogo-item:hover {
-            background: #fff;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
-            transform: translateX(4px);
-        }
-
-        .jogo-data {
-            text-align: center;
-        }
-
-        .jogo-data .dia {
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--cor-primaria);
-            line-height: 1;
-        }
-
-        .jogo-data .mes {
-            font-size: 0.85rem;
-            color: var(--cor-texto-leve);
-            text-transform: uppercase;
-        }
-
-        .jogo-info h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--cor-escuro);
-            margin-bottom: 0.2rem;
-        }
-
-        .jogo-info p {
-            font-size: 0.85rem;
-            color: var(--cor-texto-leve);
-            margin: 0;
-        }
-
-        .jogo-fase {
-            padding: 0.3rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        .fase-grupos { background: #e8f5e9; color: #2e7d32; }
-        .fase-oitavas { background: #fff3e0; color: #e65100; }
-        .fase-quartas { background: #fce4ec; color: #c62828; }
-        .fase-semi { background: #C1272D; color: #fff; }
-        .fase-final { background: var(--cor-dourado); color: #1a1a1a; }
-
-        /* CTA */
-        .sec-cta {
-            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-verde));
+            width: 40px;
+            height: 40px;
+            background: #C1272D;
+            border-radius: 50%;
             color: #fff;
-            padding: 5rem 0;
-            text-align: center;
-        }
-
-        .sec-cta h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .sec-cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-
-        .btn-branco { background: #fff; color: var(--cor-primaria); font-weight: 700; }
-        .btn-branco:hover { background: #f0f0f0; transform: translateY(-3px); }
-
-        .btn-outline-branco {
-            border: 2px solid #fff;
-            color: #fff;
-            background: transparent;
-            font-weight: 600;
-            display: inline-block;
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
             text-decoration: none;
-            transition: var(--transicao);
         }
-        .btn-outline-branco:hover { background: #fff; color: var(--cor-verde); }
 
-        /* FOOTER */
-        .footer { background: var(--cor-escuro); color: #fff; padding: 4rem 0 0; }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
+        .footer .social-links a:hover {
+            background: #006241;
+            transform: translateY(-3px);
         }
-        .footer-section h4, .footer-section h5 { margin-bottom: 1.2rem; color: var(--cor-primaria); }
-        .footer-section p { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
-        .footer-section ul { list-style: none; padding: 0; }
-        .footer-section ul li { margin-bottom: 0.8rem; }
-        .footer-section ul a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transicao); }
-        .footer-section ul a:hover { color: var(--cor-primaria); }
-        .social-links { display: flex; gap: 1.5rem; }
-        .social-links a {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; background: var(--cor-primaria);
-            border-radius: 50%; color: #fff; font-size: 1.1rem; transition: var(--transicao);
-        }
-        .social-links a:hover { background: var(--cor-verde); transform: translateY(-3px); }
+
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 2rem; text-align: center;
-            color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-top: 3rem;
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
         }
-        .footer-bottom p { margin: 0.5rem 0; }
-        .footer-bottom i { color: var(--cor-primaria); }
 
-        /* RESPONSIVIDADE */
-        @media (max-width: 992px) {
-            .sobre-wrapper, .estadio-wrapper { grid-template-columns: 1fr; }
-            .sobre-img-float { display: none; }
-            .cidades-grid { grid-template-columns: repeat(2, 1fr); }
-            .logistica-grid { grid-template-columns: repeat(2, 1fr); }
-            .turismo-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr 1fr; }
+        .footer-bottom p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-bottom i {
+            color: #C1272D;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .jogadores-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 25px;
+            }
+
+            .jogadores-header h1 {
+                font-size: 36px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
-            .menu { padding: 20px 30px; }
-            .links { gap: 1.5rem; font-size: 0.85rem; }
-            .conteudo h1 { font-size: 2.5rem; }
-            .stats-row { flex-direction: column; align-items: center; }
-            .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .jogo-item { grid-template-columns: 80px 1fr; }
-            .jogo-fase { display: none; }
-            .cidades-grid { grid-template-columns: 1fr; }
-            .logistica-grid { grid-template-columns: repeat(2, 1fr); }
+            .secao-info,
+            .secao-staff,
+            .secao-stats,
+            .secao-grupo {
+                padding: 60px 15px;
+            }
+
+            .secao-staff h2,
+            .secao-stats h2,
+            .secao-grupo h2 {
+                font-size: 32px;
+            }
+
+            .jogadores-header h1 {
+                font-size: 32px;
+            }
+
+            .jogadores-header p {
+                font-size: 16px;
+            }
+
+            .jogadores-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+
+            .posicao-grupo {
+                margin-bottom: 50px;
+            }
+
+            .posicao-grupo h2 {
+                font-size: 22px;
+            }
+
+            .staff-grid,
+            .grupo-info,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        @media (max-width: 576px) {
-            .menu { flex-direction: column; gap: 1rem; padding: 20px; }
-            .links { flex-direction: column; gap: 0.8rem; text-align: center; }
-            .conteudo h1 { font-size: 1.9rem; }
-            .logistica-grid { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; }
-            .cta-buttons { flex-direction: column; align-items: center; }
+        @media (max-width: 480px) {
+            .secao-info,
+            .secao-staff,
+            .secao-stats,
+            .secao-grupo {
+                padding: 40px 15px;
+            }
+
+            .secao-staff h2,
+            .secao-stats h2,
+            .secao-grupo h2 {
+                font-size: 24px;
+                margin-bottom: 40px;
+            }
+
+            .secao-info h3 {
+                font-size: 20px;
+            }
+
+            .secao-info p {
+                font-size: 14px;
+            }
+
+            .jogadores-header h1 {
+                font-size: 26px;
+                margin-bottom: 10px;
+            }
+
+            .jogadores-header p {
+                font-size: 14px;
+            }
+
+            .jogadores-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .posicao-grupo {
+                margin-bottom: 40px;
+            }
+
+            .posicao-grupo h2 {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .jogador-card h3 {
+                font-size: 16px;
+                padding: 15px 12px 3px;
+            }
+
+            .card-imagem {
+                height: 250px;
+            }
+
+            .numero {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .staff-card {
+                border-radius: 8px;
+            }
+
+            .staff-imagem {
+                height: 250px;
+            }
+
+            .stat-box {
+                padding: 30px 15px;
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .grupo-card {
+                padding: 25px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-<style>
-/* ═══════════════════════════════════════════════════════
-   MENU UNIFICADO
-═══════════════════════════════════════════════════════ */
-.menu {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    transition: background 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
-}
-
-.menu.scrolled {
-    background: #fff !important;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-    padding: 12px 60px;
-}
-
-.logo { position: relative; z-index: 2000; }
-.logo img { height: 45px; }
-
-.links {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-.links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    transition: color 0.3s ease;
-}
-
-.menu.scrolled .links a {
-    color: #111 !important;
-}
-
-.links a::after {
-    content: "";
-    width: 0;
-    height: 2px;
-    background: #C1272D;
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    transition: 0.3s;
-}
-
-.links a:hover::after,
-.links a.ativo::after { width: 100%; }
-
-/* Hamburger */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    padding: 4px;
-    z-index: 2000;
-}
-.hamburger span {
-    display: block;
-    width: 26px; height: 2px;
-    background: #fff;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-.menu.scrolled .hamburger span { background: #111; }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-@media (max-width: 640px) {
-    .menu { padding: 16px 24px; }
-    .menu.scrolled { padding: 12px 24px; }
-    .hamburger { display: flex; }
-    .links {
-        position: fixed;
-        top: 0; right: -100%;
-        height: 100vh;
-        width: 70%;
-        max-width: 280px;
-        background: rgba(0,0,0,0.97);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        transition: right 0.35s ease;
-        z-index: 150;
-    }
-    .links.open { right: 0; }
-    .links a { font-size: 1.2rem; color: #fff !important; }
-}
-
-/* ═══════════════════════════════════════════════════════
-   FOOTER UNIFICADO (estilo pag2)
-═══════════════════════════════════════════════════════ */
-.footer {
-    background: #000 !important;
-    color: #fff;
-    padding: 4rem 0 1rem;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2.5rem;
-    margin-bottom: 3rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 2rem;
-}
-
-.footer-section h4 {
-    margin-bottom: 1.2rem;
-    color: #C1272D;
-    font-weight: 700;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.footer-section p {
-    font-size: 0.95rem;
-    color: rgba(255,255,255,0.7);
-    line-height: 1.6;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-section ul li { margin-bottom: 0.8rem; }
-
-.footer-section ul a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section ul a:hover { color: #C1272D; }
-
-.footer .social-links {
-    display: flex;
-    gap: 1.5rem;
-}
-
-.footer .social-links a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; height: 40px;
-    background: #C1272D;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 1.1rem;
-    transition: all 0.3s;
-    text-decoration: none;
-}
-
-.footer .social-links a:hover {
-    background: #006241;
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 2rem;
-    text-align: center;
-    color: rgba(255,255,255,0.6);
-    font-size: 0.9rem;
-}
-
-.footer-bottom p { margin: 0.5rem 0; }
-.footer-bottom i { color: #C1272D; }
-</style>
 </head>
+
 <body>
-<!-- MENU UNIFICADO -->
-<header class="menu" id="main-menu">
-    <div class="logo">
-        <img src="img/morocco.png">
+    <header class="menu" id="main-menu">
+        <div class="logo">
+            <img src="img/morocco.png" alt="Logo Marrocos">
+        </div>
+
+        <nav class="links" id="navlinks">
+            <a href="index.html">Início</a>
+            <a href="pag2.html">História</a>
+            <a href="pag3.html" class="ativo">Jogadores</a>
+            <a href="pag4.html">Galeria</a>
+            <a href="pag5.html">Cidade Sede</a>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <div class="main-wrapper">
+        <div class="inicio">
+            <header>
+                <h1>Seleção <span>de Marrocos</span></h1>
+                <p class="header-sub">Copa do Mundo 2026 - Uma geração para fazer história</p>
+            </header>
+            <div class="flag-stripe">
+                <div class="s1"></div>
+                <div class="s2"></div>
+                <div class="s3"></div>
+            </div>
+        </div>
+
+        <section class="sobre">
+            <section class="secao-info verde">
+                <div class="container">
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3>Sobre a Seleção</h3>
+                            <p>Marrocos chega à Copa do Mundo 2026 como uma das seleções mais promissoras do continente africano. Após uma campanha memorável em 2022, onde chegou até as semifinais, o time busca consolidar seu crescimento e conquistar resultados ainda mais impressionantes. Com uma mistura de experiência e talento jovem, a seleção marroquina almeja surpreender novamente no cenário mundial.</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Contexto Histórico</h3>
+                            <p>Marrocos é uma potência emergente do futebol africano. Com uma estrutura de seleção consolidada e acesso a jogadores de grande qualidade jogando nos principais campeonatos europeus, o país está em seu melhor momento. A Copa 2026 representa uma oportunidade única para consolidar a geração dourada do futebol marroquino e conquistar títulos internacionais.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section class="secao-staff branco">
+            <div class="container">
+                <h2>Comando Técnico</h2>
+                <div class="staff-grid">
+                    <div class="staff-card">
+                        <div class="staff-imagem">
+                            <img src="https://static.independent.co.uk/2022/12/13/09/d7942daf7b714e338beb69807a1884c9Y29udGVudHNlYXJjaGFwaSwxNjcxMDA3MTY1-2.70229311.jpg?quality=75&width=1200&auto=webp" alt="Técnico">
+                        </div>
+                        <h3>Walid Regragui</h3>
+                        <p class="cargo">Técnico em Chefe</p>
+                        <p class="descricao">Líder experiente que levou Marrocos às semifinais da Copa 2022. Conhecido por sua tática defensiva sólida e capacidade de motivar o grupo. Continua à frente da seleção rumo à Copa 2026.</p>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-imagem">
+                            <img src="https://tse4.mm.bing.net/th/id/OIP.k8ZiL1cFe8sOqam7h7TdswHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Assistente">
+                        </div>
+                        <h3>Said Chiba</h3>
+                        <p class="cargo">Assistente Técnico</p>
+                        <p class="descricao">Especialista em defesa e organizador do esquema tático. Trabalha há anos com Regragui e é fundamental na preparação física e defensiva da equipe.</p>
+                    </div>
+
+                    <div class="staff-card">
+                        <div class="staff-imagem">
+                            <img src="https://s2-oglobo.glbimg.com/8KMXqmX00fhtsSq2YhxUEvstOu4=/1600x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_da025474c0c44edd99332dddb09cabe8/internal_photos/bs/2022/0/A/CCK8gbTk6Kgwr6D2I19Q/101437530-moroccos-players-enter-the-pitch-before-the-start-of-the-qatar-2022-world-cup-round-of-16.jpg" alt="Preparador">
+                        </div>
+                        <h3>Equipe de Preparação</h3>
+                        <p class="cargo">Preparador Físico</p>
+                        <p class="descricao">Equipe de profissionais dedicados à preparação física, nutrição e recuperação dos atletas. Utilizam tecnologia de ponta para otimizar o desempenho.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-stats vermelho">
+            <div class="container">
+                <h2>Dados da Seleção</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">35</div>
+                        <p>Jogadores convocados para pré-seleção</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">23</div>
+                        <p>Atletas na lista final</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">15</div>
+                        <p>Jogadores em ligas top da Europa</p>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">1º</div>
+                        <p>Melhor resultado: Semifinal 2022</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-grupo verde">
+            <div class="container">
+                <h2>Copa do Mundo 2026</h2>
+                <div class="grupo-info">
+                    <div class="grupo-card">
+                        <h3>Grupo e Adversários</h3>
+                        <p>Marrocos integra um grupo competitivo na Copa 2026, enfrentando seleções tradicionais e em desenvolvimento. A preparação foi intensa e o time está pronto para competir ao mais alto nível.</p>
+                    </div>
+                    <div class="grupo-card">
+                        <h3>Objetivos</h3>
+                        <ul class="objetivos-list">
+                            <li>✓ Passar da fase de grupos</li>
+                            <li>✓ Chegar às quartas de final</li>
+                            <li>✓ Avançar para as semis</li>
+                            <li>✓ Conquistar o título mundial</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-jogadores">
+            <div class="container">
+                <div class="jogadores-header">
+                    <h1>Um Pouco do Elenco</h1>
+                    <p>Conheça 15 dos 23 talentos que representarão Marrocos na Copa do Mundo 2026</p>
+                </div>
+
+                <div class="busca-container">
+                    <div class="busca-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchInput" class="busca-input" placeholder="Pesquisar jogador por nome...">
+                        <button id="limparBusca" class="limpar-busca" style="display: none;">✕</button>
+                    </div>
+                    <p class="resultado-busca" id="resultadoBusca"></p>
+                </div>
+
+                <div class="jogadores-container">
+                    <div class="posicao-grupo">
+                        <h2><i class="fa-solid fa-futbol" style="color: #00a651;"></i> Goleiros</h2>
+                        <div class="jogadores-grid">
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://i.pinimg.com/originals/89/87/88/898788b90bf41e54f56aa3be77f7892b.jpg" alt="Bono">
+                                    <span class="numero">1</span>
+                                </div>
+                                <h3>Bounou</h3>
+                                <p class="posicao">Goleiro</p>
+                                <p class="clube">Al-Hilal</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://c8.alamy.com/compfr/2knhr0n/munir-el-kajoui-du-maroc-lors-de-la-coupe-du-monde-de-la-fifa-qatar-2022-match-du-groupe-f-entre-la-belgique-et-le-maroc-au-stade-al-thumama-a-doha-qatar-sur-27-novembre-2022-photo-par-andrew-surma-sipa-usa-2knhr0n.jpg" alt="Munir">
+                                    <span class="numero">2</span>
+                                </div>
+                                <h3>Munir El Kajoui</h3>
+                                <p class="posicao">Goleiro</p>
+                                <p class="clube">Al-Wehda</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://media.gettyimages.com/id/1441756345/photo/morocco-portraits-fifa-world-cup-qatar-2022.jpg?s=594x594&w=gi&k=20&c=4ZqDVQfm8Kzl-W1QdRcFBu4CaM2xiFS7TOwrMAiqRkg=" alt="Ahmed Reda">
+                                    <span class="numero">3</span>
+                                </div>
+                                <h3>Ahmed Reda Tagnaouti</h3>
+                                <p class="posicao">Goleiro</p>
+                                <p class="clube">Wydad Casablanca</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="posicao-grupo">
+                        <h2><i class="fa-solid fa-shield-halved" style="color: #00a851;"></i> Defensores</h2>
+                        <div class="jogadores-grid">
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3309112:1670349690/hakimi_Easy-Resize.com.jpg?f=16x9&h=574&w=1020&$p$f$h$w=635967c" alt="Hakimi">
+                                    <span class="numero">4</span>
+                                </div>
+                                <h3>Achraf Hakimi</h3>
+                                <p class="posicao">Lateral Direito</p>
+                                <p class="clube">Paris Saint-Germain</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://cdn-s-www.ledauphine.com/images/F1983FF2-3112-4458-8C9C-4AE9E0C13256/NW_raw/ne-dans-la-drome-d-un-pere-marocain-et-d-une-mere-francaise-romain-saiss-a-commence-le-football-dans-le-club-de-saint-laurent-en-royans-avant-de-devenir-le-capitaine-de-la-selection-du-maroc-photo-maxppp-friedemann-vogel-1672260532.jpg" alt="Romain">
+                                    <span class="numero">5</span>
+                                </div>
+                                <h3>Romain Saïss</h3>
+                                <p class="posicao">Zagueiro</p>
+                                <p class="clube">Besiktas</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://www.coeurmarseillais.fr/wp-content/uploads/2025/10/Nayef-Aguerd-2.jpg" alt="Nayef">
+                                    <span class="numero">6</span>
+                                </div>
+                                <h3>Nayef Aguerd</h3>
+                                <p class="posicao">Zagueiro</p>
+                                <p class="clube">West Ham United</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://i.pinimg.com/originals/0d/a7/ed/0da7ed13f43729727372817bb5583fd9.jpg" alt="Noussair">
+                                    <span class="numero">7</span>
+                                </div>
+                                <h3>Noussair Mazraoui</h3>
+                                <p class="posicao">Lateral Esquerdo</p>
+                                <p class="clube">Bayern Munich</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://africafoot.com/wp-content/uploads/2023/06/Yahia-Attiyat-Allah.jpg" alt="Attiyat">
+                                    <span class="numero">8</span>
+                                </div>
+                                <h3>Attiyat Allah Omari</h3>
+                                <p class="posicao">Lateral Esquerdo</p>
+                                <p class="clube">Wydad Casablanca</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="posicao-grupo">
+                        <h2><i class="fa-solid fa-bullseye" style="color: #00a851;"></i> Meio-campistas</h2>
+                        <div class="jogadores-grid">
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://es.moyens.net/wp-content/uploads/2022/12/Sofyan-Amrabat-cerca-de-un-gran-club-de-la-Premier.jpg" alt="Sofyan">
+                                    <span class="numero">9</span>
+                                </div>
+                                <h3>Sofyan Amrabat</h3>
+                                <p class="posicao">Meio-campista</p>
+                                <p class="clube">Manchester United</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://africasoccer.com/wp-content/uploads/2025/12/Capture-decran-2025-12-13-a-161202-750x536-1.png" alt="Bilal">
+                                    <span class="numero">10</span>
+                                </div>
+                                <h3>Bilal El Khannouss</h3>
+                                <p class="posicao">Meio-campista</p>
+                                <p class="clube">Leicester City</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://www.grada3.com/wp-content/uploads/2025/11/Adobe-Express-file-2-1-4.jpg" alt="Selim">
+                                    <span class="numero">11</span>
+                                </div>
+                                <h3>Selim Brahim</h3>
+                                <p class="posicao">Meio-campista</p>
+                                <p class="clube">Raja Casablanca</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="posicao-grupo">
+                        <h2><i class="fa-solid fa-skull" style="color: #00a851;"></i> Atacantes</h2>
+                        <div class="jogadores-grid">
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://lncimg.lance.com.br/cdn-cgi/image/width=950,quality=75,fit=pad,format=webp/uploads/2022/12/14/6399ff071c3e1.jpeg" alt="Hakim">
+                                    <span class="numero">12</span>
+                                </div>
+                                <h3>Hakim Ziyech</h3>
+                                <p class="posicao">Ponta</p>
+                                <p class="clube">Galatasaray</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://talksport.com/wp-content/uploads/sites/5/2022/12/youssef-en-nesyri-morocco-celebrates-781981879.jpg?w=1920" alt="Youssef">
+                                    <span class="numero">13</span>
+                                </div>
+                                <h3>Youssef En-Nesyri</h3>
+                                <p class="posicao">Centroavante</p>
+                                <p class="clube">Sevilla</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://www.booska-p.com/wp-content/uploads/2022/12/l-incroyable-prediction-de-sofiane-boufal-sur-le-parcours-du-maroc-a-la-coupe-du-monde-news-visu-scaled.jpg" alt="Sofiane">
+                                    <span class="numero">14</span>
+                                </div>
+                                <h3>Sofiane Boufal</h3>
+                                <p class="posicao">Extremo</p>
+                                <p class="clube">Angers</p>
+                            </div>
+
+                            <div class="jogador-card">
+                                <div class="card-imagem">
+                                    <img src="https://media.gettyimages.com/id/1245421443/photo/morocco-v-spain-fifa-world-cup-2022-round-of-16.jpg?s=594x594&w=gi&k=20&c=87qqhgxsmQxmeJPj0BSVerzGFyY7lv8GF_F0CBcvvk8=" alt="Anass">
+                                    <span class="numero">15</span>
+                                </div>
+                                <h3>Anass Zaroury</h3>
+                                <p class="posicao">Ponta</p>
+                                <p class="clube">Burnley</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Marrocos 2026</h4>
+                    <p>Site oficial dedicado à seleção marroquina rumo à Copa do Mundo 2026.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="pag2.html">História</a></li>
+                        <li><a href="pag3.html">Jogadores</a></li>
+                        <li><a href="pag4.html">Galeria</a></li>
+                        <li><a href="pag5.html">Cidade Sede</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Seções Especiais</h4>
+                    <ul>
+                        <li><a href="index.html">Página Principal</a></li>
+                        <li><a href="pag2.html">História Completa</a></li>
+                        <li><a href="pag3.html">Elenco</a></li>
+                        <li><a href="pag4.html">Galeria Cultural</a></li>
+                        <li><a href="pag5.html">Cidade Sede</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Conecte-se</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Seleção Marroquina. Todos os direitos reservados.</p>
+                <p>Criado com <i class="fas fa-heart"></i> para honrar a força de uma nação.</p>
+            </div>
+        </footer>
     </div>
-    <nav class="links" id="navlinks">
-        <a href="pag1.html">Início</a>
-        <a href="pag2.html">História</a>
-        <a href="pag3.html">Jogadores</a>
-        <a href="pag4.html">Galeria</a>
-        <a href="pag5.html">Cidade Sede</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-    </button>
-</header>
-<div class="main-wrapper">
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="conteudo">
-            <span class="badge-cidade" data-aos="fade-down">🇲🇦 Copa do Mundo 2026</span>
-            <h1 data-aos="fade-up">Casablanca</h1>
-            <p class="subtitulo-hero" data-aos="fade-up" data-aos-delay="100">A Pérola do Atlântico</p>
-            <p data-aos="fade-up" data-aos-delay="200">
-                A maior cidade de Marrocos recebe os jogos mais importantes da Copa do Mundo 2026, incluindo a grande final.
-            </p>
-            <a href="#sobre" class="btn btn-primary" data-aos="fade-up" data-aos-delay="400">
-                Descobrir a Cidade <i class="fas fa-arrow-down"></i>
-            </a>
-        </div>
-    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- STATS RÁPIDOS -->
-    <section class="sec-stats">
-        <div class="container">
-            <div class="stats-row">
-                <div class="stat-item" data-aos="fade-up">
-                    <div class="stat-num">4M+</div>
-                    <div class="stat-label">Habitantes</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stat-num">1907</div>
-                    <div class="stat-label">Fundação Moderna</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-num">114K</div>
-                    <div class="stat-label">Capacidade do Estádio</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-num">23°C</div>
-                    <div class="stat-label">Temperatura Média</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-num">#1</div>
-                    <div class="stat-label">Sede Principal</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const limparBtn = document.getElementById('limparBusca');
+        const resultadoText = document.getElementById('resultadoBusca');
+        const jogadorCards = document.querySelectorAll('.jogador-card');
+        const posicaoGrupos = document.querySelectorAll('.posicao-grupo');
 
-    <!-- SOBRE A CIDADE -->
-    <section class="sec-sobre" id="sobre">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Casablanca — A Metrópole</h2>
-                <p class="subtitle">Modernidade e tradição à beira do Oceano Atlântico</p>
-            </div>
-            <div class="sobre-wrapper">
-                <div class="sobre-imagens" data-aos="fade-right">
-                    <img src="imgcopa/casablanca.jpg" alt="Casablanca" class="sobre-img-main"
-                         onerror="this.style.background='linear-gradient(135deg,#C1272D,#006241)';this.style.height='420px';this.src=''">
-                    <img src="imgcopa/mesquita.jpg" alt="Hassan II" class="sobre-img-float"
-                         onerror="this.src='';this.style.background='linear-gradient(135deg,#FFC72C,#8b6914)'">
-                </div>
-                <div class="sobre-texto" data-aos="fade-left">
-                    <h3>Casa Blanca — "Casa Branca"</h3>
-                    <p class="subtitle-text">Centro financeiro e econômico de Marrocos</p>
-                    <p>Casablanca é a maior metrópole de Marrocos e uma das mais importantes do continente africano. Estrategicamente posicionada na costa atlântica, a cidade é o coração econômico, financeiro e comercial do país.</p>
-                    <p>Com sua mistura única de arquitetura art déco dos anos 1920-30, medinas antigas e arranha-céus modernos, Casablanca encarna a fusão entre o Marrocos tradicional e a cidade do século XXI.</p>
-                    <p>Sede do maior porto da África, da Bolsa de Valores e das principais empresas do país, é a porta de entrada para o Marrocos moderno — cosmopolita, ambicioso e conectado ao mundo.</p>
-                    <div class="info-badges">
-                        <div class="info-badge"><i class="fas fa-map-marker-alt"></i> Região Casablanca-Settat</div>
-                        <div class="info-badge"><i class="fas fa-plane"></i> Aeroporto Mohammed V</div>
-                        <div class="info-badge"><i class="fas fa-clock"></i> UTC+1</div>
-                        <div class="info-badge"><i class="fas fa-language"></i> Árabe, Francês, Darija</div>
-                        <div class="info-badge"><i class="fas fa-money-bill"></i> Dirham Marroquino (MAD)</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        searchInput.addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase().trim();
+            let totalEncontrados = 0;
 
-    <!-- ESTÁDIO -->
-    <section class="sec-estadio" id="estadio">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>O Grande Estádio</h2>
-                <p class="subtitle">A arena que receberá a final da Copa do Mundo 2026</p>
-            </div>
-            <div class="estadio-wrapper">
-                <div class="estadio-info" data-aos="fade-right">
-                    <h3>Grand Stade de Casablanca</h3>
-                    <p class="subtitle-text">O maior estádio de futebol da África</p>
-                    <p>Construído especialmente para a Copa do Mundo 2026, o Grand Stade de Casablanca é uma obra arquitetônica monumental, inspirada nas formas geométricas do mosaico zellige e na estrela de cinco pontas da bandeira marroquina.</p>
-                    <p>Com capacidade para mais de 114.000 espectadores, supera o histórico Maracanã e se tornará o segundo maior estádio do mundo. O projeto integra tecnologias sustentáveis, incluindo painéis solares, captação de água da chuva e ventilação natural.</p>
-                    <p>Receberá os jogos mais importantes do torneio, com <strong>destaque para a grande final</strong>, marcando um capítulo histórico para o futebol africano.</p>
-                    <div class="estadio-specs">
-                        <div class="spec-item">
-                            <div class="spec-valor">114.000+</div>
-                            <div class="spec-nome">Capacidade</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-valor">2026</div>
-                            <div class="spec-nome">Inauguração</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-valor">FIFA ★★★★★</div>
-                            <div class="spec-nome">Certificação</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-valor">Final</div>
-                            <div class="spec-nome">Jogo Principal</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="estadio-img-wrapper" data-aos="fade-left">
-                    <img src="imgcopa/stadium.jpg" alt="Grand Stade de Casablanca" class="estadio-img-main"
-                         onerror="this.style.background='linear-gradient(135deg,#C1272D 30%,#006241)';this.src=''">
-                    <span class="estadio-badge">🏟️ Sede da Final</span>
-                </div>
-            </div>
-        </div>
-    </section>
+            limparBtn.style.display = searchValue ? 'block' : 'none';
 
-    <!-- OUTRAS CIDADES SEDE DE MARROCOS -->
-    <section class="sec-cidades" id="cidades">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Outras Cidades Sede</h2>
-                <p class="subtitle">Marrocos tem 6 cidades confirmadas para a Copa 2026</p>
-            </div>
-            <div class="cidades-grid">
+            jogadorCards.forEach(card => {
+                const nomJogador = card.querySelector('h3').textContent.toLowerCase();
+                const posicao = card.querySelector('.posicao').textContent.toLowerCase();
+                const clube = card.querySelector('.clube').textContent.toLowerCase();
 
-                <div class="cidade-card" data-aos="fade-up">
-                    <img src="imgcopa/rabat.webp" alt="Rabat" class="cidade-card-img"
-                         onerror="this.style.background='linear-gradient(135deg,#C1272D,#8b0000)';this.src=''">
-                    <div class="cidade-card-body">
-                        <h4>Rabat</h4>
-                        <div class="cidade-info">
-                            <span><i class="fas fa-users"></i> 577 mil hab.</span>
-                            <span><i class="fas fa-building"></i> Capital</span>
-                        </div>
-                        <p>Capital política do país, Rabat é Patrimônio da Humanidade pela UNESCO. Combina monumentos medievais, jardins exuberantes e o charme de cidade histórica.</p>
-                    </div>
-                </div>
-
-                <div class="cidade-card" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=700&q=80" alt="Marrakech" class="cidade-card-img"
-                         onerror="this.style.background='linear-gradient(135deg,#8b5e3c,#FFC72C)';this.src=''">
-                    <div class="cidade-card-body">
-                        <h4>Marrakech</h4>
-                        <div class="cidade-info">
-                            <span><i class="fas fa-users"></i> 1 milhão hab.</span>
-                            <span><i class="fas fa-star"></i> Cidade Vermelha</span>
-                        </div>
-                        <p>A "Cidade Vermelha" é o coração cultural de Marrocos. Com a famosa praça Djemaa el-Fna, souks coloridos e palácios históricos, é destino turístico de classe mundial.</p>
-                    </div>
-                </div>
-
-                <div class="cidade-card" data-aos="fade-up" data-aos-delay="200">
-                    <img src="imgcopa/fes.jpg" alt="Fez" class="cidade-card-img"
-                         onerror="this.style.background='linear-gradient(135deg,#006241,#003d28)';this.src=''">
-                    <div class="cidade-card-body">
-                        <h4>Fez</h4>
-                        <div class="cidade-info">
-                            <span><i class="fas fa-users"></i> 1,1 milhão hab.</span>
-                            <span><i class="fas fa-landmark"></i> UNESCO</span>
-                        </div>
-                        <p>Fundada no século IX, Fez abriga a universidade mais antiga do mundo ainda em funcionamento (Al-Qarawiyyin, 859 d.C.) e a medina medieval mais intacta do Islã.</p>
-                    </div>
-                </div>
-
-                <div class="cidade-card" data-aos="fade-up" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="Agadir" class="cidade-card-img"
-                         onerror="this.style.background='linear-gradient(135deg,#4a90d9,#006241)';this.src=''">
-                    <div class="cidade-card-body">
-                        <h4>Agadir</h4>
-                        <div class="cidade-info">
-                            <span><i class="fas fa-users"></i> 600 mil hab.</span>
-                            <span><i class="fas fa-umbrella-beach"></i> Praias</span>
-                        </div>
-                        <p>A capital do turismo de praia marroquino. Reconstruída após o terramoto de 1960, Agadir é uma cidade moderna com praias de areia dourada e clima ameno.</p>
-                    </div>
-                </div>
-
-                <div class="cidade-card" data-aos="fade-up" data-aos-delay="400">
-                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=700&q=80" alt="Tânger" class="cidade-card-img"
-                         onerror="this.style.background='linear-gradient(135deg,#2c3e50,#3498db)';this.src=''">
-                    <div class="cidade-card-body">
-                        <h4>Tânger</h4>
-                        <div class="cidade-info">
-                            <span><i class="fas fa-users"></i> 1 milhão hab.</span>
-                            <span><i class="fas fa-water"></i> Estreito de Gibraltar</span>
-                        </div>
-                        <p>Porta de entrada da África para a Europa, Tânger é uma cidade cosmopolita no Estreito de Gibraltar, com séculos de história como ponto de encontro de culturas.</p>
-                    </div>
-                </div>
-
-                <div class="cidade-card" data-aos="fade-up" data-aos-delay="500">
-                    <img src="imgcopa/oujda.jpg" alt="Oujda" class="cidade-card-img"
-                         onerror="this.style.background='linear-gradient(135deg,#8e44ad,#C1272D)';this.src=''">
-                    <div class="cidade-card-body">
-                        <h4>Oujda</h4>
-                        <div class="cidade-info">
-                            <span><i class="fas fa-users"></i> 600 mil hab.</span>
-                            <span><i class="fas fa-map"></i> Nordeste</span>
-                        </div>
-                        <p>A porta oriental de Marrocos, próxima à fronteira com a Argélia. Cidade universitária vibrante com história milenar e forte tradição musical amazigh.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PONTOS TURÍSTICOS -->
-    <section class="sec-turismo" id="turismo">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>O Que Visitar em Casablanca</h2>
-                <p class="subtitle">Pontos imperdíveis para quem vem à Copa</p>
-            </div>
-            <div class="turismo-grid">
-
-                <div class="turismo-item" data-aos="fade-up">
-                    <div class="turismo-icon"><i class="fas fa-mosque"></i></div>
-                    <div class="turismo-info">
-                        <h4>Mesquita Hassan II</h4>
-                        <p>Uma das maiores mesquitas do mundo, construída sobre o oceano Atlântico. O minarete de 210 metros é o mais alto do planeta. Obra-prima da arquitetura islâmica contemporânea.</p>
-                    </div>
-                </div>
-
-                <div class="turismo-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="turismo-icon"><i class="fas fa-building"></i></div>
-                    <div class="turismo-info">
-                        <h4>Bairro Art Déco Maarif</h4>
-                        <p>Casablanca possui o maior conjunto de arquitetura art déco do mundo fora da Europa. Ruas repletas de edifícios dos anos 1920-1950 com influência francesa e mourisca.</p>
-                    </div>
-                </div>
-
-                <div class="turismo-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="turismo-icon"><i class="fas fa-umbrella-beach"></i></div>
-                    <div class="turismo-info">
-                        <h4>Corniche de Ain Diab</h4>
-                        <p>O calçadão à beira do Atlântico repleto de restaurantes, bares e piscinas naturais. Ponto de encontro da boemia casablancana ao anoitecer.</p>
-                    </div>
-                </div>
-
-                <div class="turismo-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="turismo-icon"><i class="fas fa-shopping-bag"></i></div>
-                    <div class="turismo-info">
-                        <h4>Medina Antiga & Souks</h4>
-                        <p>O coração histórico com seus mercados de especiarias, artesanato, tecidos e joias. Uma experiência sensorial única entre becos centenários.</p>
-                    </div>
-                </div>
-
-                <div class="turismo-item" data-aos="fade-up">
-                    <div class="turismo-icon"><i class="fas fa-film"></i></div>
-                    <div class="turismo-info">
-                        <h4>Rick's Café</h4>
-                        <p>Réplica fiel do bar do filme "Casablanca" (1942). Um ícone cultural que celebra a história da cidade e atrai visitantes do mundo inteiro.</p>
-                    </div>
-                </div>
-
-                <div class="turismo-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="turismo-icon"><i class="fas fa-palette"></i></div>
-                    <div class="turismo-info">
-                        <h4>Villa des Arts</h4>
-                        <p>Um espaço cultural dedicado à arte contemporânea marroquina instalado em uma elegante mansão art déco do século XX.</p>
-                    </div>
-                </div>
-
-                <div class="turismo-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="turismo-icon"><i class="fas fa-chess-rook"></i></div>
-                    <div class="turismo-info">
-                        <h4>Place Mohammed V</h4>
-                        <p>A praça central de Casablanca, coração da cidade moderna. Rodeada por edifícios administrativos históricos, fontes iluminadas e o Palácio de Justiça.</p>
-                    </div>
-                </div>
-
-                <div class="turismo-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="turismo-icon"><i class="fas fa-utensils"></i></div>
-                    <div class="turismo-info">
-                        <h4>Bairro Gastrônomico Anfa</h4>
-                        <p>O melhor da culinária marroquina e internacional em restaurantes sofisticados. Do tajine ao couscous, passando por frutos do mar fresquíssimos do Atlântico.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- LOGÍSTICA E CLIMA -->
-    <section class="sec-logistica" id="logistica">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Informações Práticas</h2>
-                <p class="subtitle">Tudo o que você precisa saber para vir à Copa</p>
-            </div>
-            <div class="logistica-grid">
-
-                <div class="logistica-card" data-aos="fade-up">
-                    <div class="logistica-icon">☀️</div>
-                    <h4>Clima em Junho/Julho</h4>
-                    <p>Temperatura entre 18°C e 28°C. Céu limpo, brisa atlântica e pouca chuva. Ideal para o futebol e passeios.</p>
-                </div>
-
-                <div class="logistica-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="logistica-icon">✈️</div>
-                    <h4>Aeroporto</h4>
-                    <p>Mohammed V International Airport (CMN), a 30km do centro. Conexões para todo o mundo, com voos diretos do Brasil via Europa.</p>
-                </div>
-
-                <div class="logistica-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="logistica-icon">🚄</div>
-                    <h4>Transporte</h4>
-                    <p>Trem de alta velocidade Al Boraq liga Casablanca a Tânger em 2h10min. Metrô moderno e ônibus BRT na cidade.</p>
-                </div>
-
-                <div class="logistica-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="logistica-icon">🏨</div>
-                    <h4>Hospedagem</h4>
-                    <p>Ampla rede hoteleira de todas as categorias, de riad boutiques à redes internacionais 5 estrelas na Corniche.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- JOGOS EM CASABLANCA -->
-    <section class="sec-jogos" id="jogos">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Jogos em Casablanca</h2>
-                <p class="subtitle">Programa confirmado no Grand Stade</p>
-            </div>
-            <div class="jogos-lista">
-
-                <div class="jogo-item" data-aos="fade-up">
-                    <div class="jogo-data"><div class="dia">14</div><div class="mes">Jun 2026</div></div>
-                    <div class="jogo-info">
-                        <h4>Abertura do Torneio — Grupo A</h4>
-                        <p>Grand Stade de Casablanca — 18h00 (local)</p>
-                    </div>
-                    <span class="jogo-fase fase-grupos">Fase de Grupos</span>
-                </div>
-
-                <div class="jogo-item" data-aos="fade-up" data-aos-delay="50">
-                    <div class="jogo-data"><div class="dia">20</div><div class="mes">Jun 2026</div></div>
-                    <div class="jogo-info">
-                        <h4>Jogo do Grupo B — Potência Europeia vs Sul-América</h4>
-                        <p>Grand Stade de Casablanca — 20h00 (local)</p>
-                    </div>
-                    <span class="jogo-fase fase-grupos">Fase de Grupos</span>
-                </div>
-
-                <div class="jogo-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="jogo-data"><div class="dia">03</div><div class="mes">Jul 2026</div></div>
-                    <div class="jogo-info">
-                        <h4>Rodada de Oitavas de Final</h4>
-                        <p>Grand Stade de Casablanca — 18h00 (local)</p>
-                    </div>
-                    <span class="jogo-fase fase-oitavas">Oitavas de Final</span>
-                </div>
-
-                <div class="jogo-item" data-aos="fade-up" data-aos-delay="150">
-                    <div class="jogo-data"><div class="dia">11</div><div class="mes">Jul 2026</div></div>
-                    <div class="jogo-info">
-                        <h4>Quartas de Final</h4>
-                        <p>Grand Stade de Casablanca — 20h00 (local)</p>
-                    </div>
-                    <span class="jogo-fase fase-quartas">Quartas de Final</span>
-                </div>
-
-                <div class="jogo-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="jogo-data"><div class="dia">17</div><div class="mes">Jul 2026</div></div>
-                    <div class="jogo-info">
-                        <h4>Semifinal — Os 4 Melhores</h4>
-                        <p>Grand Stade de Casablanca — 20h00 (local)</p>
-                    </div>
-                    <span class="jogo-fase fase-semi">Semifinal</span>
-                </div>
-
-                <div class="jogo-item" data-aos="fade-up" data-aos-delay="250">
-                    <div class="jogo-data"><div class="dia">23</div><div class="mes">Jul 2026</div></div>
-                    <div class="jogo-info">
-                        <h4>🏆 GRANDE FINAL — Copa do Mundo 2026</h4>
-                        <p>Grand Stade de Casablanca — 20h00 (local) · O maior jogo do mundo</p>
-                    </div>
-                    <span class="jogo-fase fase-final">🏆 FINAL</span>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="sec-cta">
-        <div class="container">
-            <h2 data-aos="fade-up">Marrocos Espera por Você</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Explore a galeria cultural e conheça os jogadores que defenderão as cores dos Leões do Atlas em casa.</p>
-            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="200">
-                <a href="pag4.html" class="btn btn-branco">Ver Galeria Cultural <i class="fas fa-images"></i></a>
-                <a href="pag3.html" class="btn-outline-branco">Conhecer o Elenco <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    AOS.init({ once: true, duration: 700 });
-
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('.menu');
-        if (window.scrollY > 50) header.classList.add('scrolled');
-        else header.classList.remove('scrolled');
-    });
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) target.scrollIntoView({ behavior: 'smooth' });
-        });
-    });
-</script>
-<!-- FOOTER UNIFICADO -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>Marrocos 2026</h4>
-            <p>Site oficial dedicado à seleção marroquina rumo à Copa do Mundo 2026.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Navegação</h4>
-            <ul>
-                <li><a href="pag1.html">Início</a></li>
-                <li><a href="pag2.html">História</a></li>
-                <li><a href="pag3.html">Jogadores</a></li>
-                <li><a href="pag4.html">Galeria</a></li>
-                <li><a href="pag5.html">Cidade Sede</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Seções Especiais</h4>
-            <ul>
-                <li><a href="pag1.html">Página Principal</a></li>
-                <li><a href="pag2.html">História Completa</a></li>
-                <li><a href="pag3.html">Elenco</a></li>
-                <li><a href="pag4.html">Galeria Cultural</a></li>
-                <li><a href="pag5.html">Cidade Sede</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h4>Conecte-se</h4>
-            <div class="social-links">
-                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Seleção Marroquina. Todos os direitos reservados.</p>
-        <p>Criado com <i class="fas fa-heart"></i> para honrar a força de uma nação.</p>
-    </div>
-</footer>
-<script>
-/* ── Menu scroll + hamburger unificado ── */
-(function() {
-    var menu = document.getElementById('main-menu');
-    var hamburger = document.getElementById('hamburger');
-    var navlinks = document.getElementById('navlinks');
-
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            menu.classList.add('scrolled');
-        } else {
-            menu.classList.remove('scrolled');
-        }
-    });
-
-    if (hamburger) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('open');
-            navlinks.classList.toggle('open');
-        });
-        navlinks.querySelectorAll('a').forEach(function(a) {
-            a.addEventListener('click', function() {
-                hamburger.classList.remove('open');
-                navlinks.classList.remove('open');
+                if (nomJogador.includes(searchValue) || posicao.includes(searchValue) || clube.includes(searchValue)) {
+                    card.classList.remove('hidden');
+                    totalEncontrados++;
+                } else {
+                    card.classList.add('hidden');
+                }
             });
+
+            posicaoGrupos.forEach(grupo => {
+                const cardsVisiveis = grupo.querySelectorAll('.jogador-card:not(.hidden)').length;
+                grupo.classList.toggle('vazio', cardsVisiveis === 0);
+            });
+
+            if (searchValue) {
+                resultadoText.textContent = totalEncontrados === 0
+                    ? 'Nenhum jogador encontrado com esse critério.'
+                    : `${totalEncontrados} jogador${totalEncontrados !== 1 ? 'es' : ''} encontrado${totalEncontrados !== 1 ? 's' : ''}.`;
+                resultadoText.classList.add('show');
+            } else {
+                resultadoText.classList.remove('show');
+            }
         });
-    }
-})();
-</script>
+
+        limparBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+            searchInput.dispatchEvent(new Event('input'));
+        });
+
+        (function() {
+            var menu = document.getElementById('main-menu');
+            var hamburger = document.getElementById('hamburger');
+            var navlinks = document.getElementById('navlinks');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    menu.classList.add('scrolled');
+                } else {
+                    menu.classList.remove('scrolled');
+                }
+            });
+
+            if (hamburger && navlinks) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('open');
+                    navlinks.classList.toggle('open');
+                });
+
+                navlinks.querySelectorAll('a').forEach(function(a) {
+                    a.addEventListener('click', function() {
+                        hamburger.classList.remove('open');
+                        navlinks.classList.remove('open');
+                    });
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

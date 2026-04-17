@@ -21,6 +21,7 @@
       --verde: #000;
       --vermelho: #C1272D;
       --ouro: #FFD700;
+      --jaca: #fff;
       --areia: #F5ECD7;
       --escuro: #1A0A00;
       --texto: #2C1A0E;
@@ -149,28 +150,25 @@
     /* HERO HEADER */
     .hero-header {
       position: relative;
-      background: var(--verde);
+      background: #000;
       overflow: hidden;
-      padding: 7rem 2rem 2.5rem;
+      padding: 18.9rem 2rem 8rem;
       text-align: center;
-      margin-top: 0;
     }
 
     .hero-header::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(193,39,45,0.35) 0%, transparent 70%);
+     background: url('https://tse1.mm.bing.net/th/id/OIP.BHSfS-Vkt8NT2M5yNQvHcwHaEb?rs=1&pid=ImgDetMain&o=7&rm=3') center/cover no-repeat;
+     opacity: 0.4;
     }
 
     .hero-header::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 19px),
-        repeating-linear-gradient(-45deg, transparent, transparent 18px, rgba(255,255,255,0.04) 18px, rgba(255,255,255,0.04) 19px);
-      pointer-events: none;
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(135deg, rgba(193,39,45,0.6), rgba(0,98,65,0.5));
     }
 
     .hero-header h1 {
@@ -186,7 +184,7 @@
     }
 
     .hero-header h1 span {
-      color: var(--ouro);
+      color: var(--jaca);
       display: block;
       font-style: italic;
     }
@@ -211,7 +209,7 @@
     }
 
     .flag-stripe .s1 { background: var(--vermelho); }
-    .flag-stripe .s2 { background: var(--ouro); }
+    .flag-stripe .s2 { background: var(--jaca); }
     .flag-stripe .s3 { background: var(--vermelho); }
 
     .intro {
@@ -750,7 +748,7 @@
     </div>
 
     <nav class="links" id="navlinks">
-      <a href="pag1.html">Início</a>
+      <a href="index.html">Início</a>
       <a href="pag2.html" class="ativo">História</a>
       <a href="pag3.html">Jogadores</a>
       <a href="pag4.html">Galeria</a>
@@ -982,7 +980,7 @@
       <div class="footer-section">
         <h4>Navegação</h4>
         <ul>
-          <li><a href="pag1.html">Início</a></li>
+          <li><a href="index.html">Início</a></li>
           <li><a href="pag2.html">História</a></li>
           <li><a href="pag3.html">Jogadores</a></li>
           <li><a href="pag4.html">Galeria</a></li>
@@ -993,7 +991,7 @@
       <div class="footer-section">
         <h4>Seções Especiais</h4>
         <ul>
-          <li><a href="pag1.html">Página Principal</a></li>
+          <li><a href="index.html">Página Principal</a></li>
           <li><a href="pag2.html">História Completa</a></li>
           <li><a href="pag3.html">Elenco</a></li>
           <li><a href="pag4.html">Galeria Cultural</a></li>

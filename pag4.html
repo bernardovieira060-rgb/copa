@@ -4,13 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeria - Marrocos Copa 2026</title>
-    <link rel="shortcut icon" type="image/svg+xml" href="https://tse3.mm.bing.net/th/id/OIP.RQXcY6_rssYXlHf13D14-wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+    <link rel="shortcut icon" type="image/svg+xml" href="img/morocco.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap');
+
+/* ── QR SECTION ── */
+.sec-qr {
+    background: linear-gradient(160deg, #1A0A0E 0%, #2E0D1C 50%, #1a1a0a 100%);
+    padding: 4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+}
+.sec-qr::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(193,39,45,0.18) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(0,98,65,0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+/* ornamento arabesco topo */
+.sec-qr::after {
+    content: '✦  ❖  ✦';
+    position: absolute;
+    top: 1.5rem;
+    color: rgba(232,201,122,0.35);
+    font-size: 1.2rem;
+    letter-spacing: 18px;
+}
+.qr-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #E8C97A;
+    font-size: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1.6rem;
+    opacity: .85;
+}
+.qr-card {
+    background: linear-gradient(145deg, #C1102B, #8B0020);
+    border-radius: 20px;
+    padding: 28px 32px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    box-shadow:
+        0 0 0 1px rgba(232,201,122,0.5),
+        0 0 0 4px rgba(193,16,43,0.3),
+        0 20px 60px rgba(0,0,0,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    position: relative;
+    z-index: 1;
+}
+.qr-card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    width: 100%;
+    justify-content: center;
+}
+.qr-dot { width: 7px; height: 7px; border-radius: 50%; background: #E8C97A; opacity: .9; }
+.qr-speaker { width: 48px; height: 6px; border-radius: 4px; background: rgba(0,0,0,0.35); }
+.qr-box {
+    background: #F5E1C0;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #E8C97A;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+#qrcode canvas, #qrcode img { display: block; border-radius: 4px; }
+.qr-stars {
+    display: flex;
+    gap: 8px;
+    margin: 14px 0 6px;
+    color: #E8C97A;
+    font-size: 14px;
+    letter-spacing: 4px;
+}
+.qr-scan {
+    color: #F5E1C0;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+.qr-label {
+    margin-top: 1.8rem;
+    text-align: center;
+    color: rgba(245,225,192,0.65);
+    font-size: 0.82rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    max-width: 260px;
+    line-height: 1.7;
+}
         * {
             margin: 0;
             padding: 0;
@@ -1367,6 +1468,31 @@
             </div>
         </div>
     </section>
+
+    <section class="sec-qr">
+    <div class="qr-eyebrow">Marrocos · Copa 2026</div>
+    <div class="qr-card">
+        <div class="qr-card-top">
+            <div class="qr-dot"></div>
+            <div class="qr-speaker"></div>
+            <div class="qr-dot"></div>
+        </div>
+        <div class="qr-box"><div id="qrcode"></div></div>
+        <div class="qr-stars"><span>✦</span><span>★</span><span>✦</span></div>
+        <div class="qr-scan">Escanear Qr code</div>
+    </div>
+    <div class="qr-label">Aponte a câmera e explore o documentário oficial do país.</div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+new QRCode(document.getElementById("qrcode"),{
+    text:"https://youtu.be/BOs4E-cmMwk?si=LLavuZNHi1IRJGWg",
+    width:190, height:190,
+    colorDark:"#2E0D1C",
+    colorLight:"#F5E1C0",
+    correctLevel:QRCode.CorrectLevel.H
+});
+</script>
 
     <section class="sec-cta">
         <div class="container">
